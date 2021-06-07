@@ -1,16 +1,15 @@
 const express = require('express')
+const routes = require('./routes')
 
 require('./database')
 
 const app = express()
 
 app.use(express.json())
+app.use(routes)
 
 const PORT = 3333
 
-app.get('/', (req, res) => {
-  return res.status(200).json({ message: 'Hello' })
-})
 app.listen(PORT, () => {
   console.log(`Server launched on: http://localhost:${PORT}`)
 })
