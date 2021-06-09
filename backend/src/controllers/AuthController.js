@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { User } = require('../models')
+const { JWT_SECRET } = require('../config/authConfig')
 
 class AuthController {
   async login(req, res) {
@@ -22,7 +23,7 @@ class AuthController {
         return res.status(403).json({ error: 'Senha inválida' })
       }
 
-      const token = jwt.sign({}, 'secret', {
+      const token = jwt.sign({}, process.env.JWT_SECRET, {
         subject: String(user.dataValues.id),
         expiresIn: '1d'
       })
@@ -39,6 +40,21 @@ class AuthController {
     } catch (e) {
       return res.status(500).json({ error: e.message })
     }
+  }
+
+  async getCurrentUser(req, res) {
+    const { userId } = req
+
+    const user = await User.findByPk(userId)
+
+    console.log(user)
+
+    return res.status(200).json({
+      message: 'Dados recuperados com sucesso!',
+      content: {
+        user
+      }
+    })
   }
 }
 
