@@ -17,17 +17,12 @@ class UserController {
       const salt = await bcrypt.genSalt(10)
       const hashedPassword = await bcrypt.hash(password, salt)
 
-      const newUser = await User.create(
-        {
-          name,
-          email,
-          password: hashedPassword,
-          role
-        },
-        {
-          raw: true
-        }
-      )
+      const newUser = await User.create({
+        name,
+        email,
+        password: hashedPassword,
+        role
+      })
 
       return res.status(201).json(newUser)
     } catch (error) {
