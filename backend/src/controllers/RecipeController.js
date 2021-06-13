@@ -23,6 +23,25 @@ class RecipeController {
     }
   }
 
+  async findByUser(req, res) {
+    try {
+      const { user_id } = req.params
+
+      const user = await User.findByPk(user_id, {
+        include: { association: 'recipes' }
+      })
+
+      return res.status(200).json({
+        message: `Receitas de ${user.name} recuperadas com sucesso!`,
+        content: {
+          recipes: user.recipes
+        }
+      })
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
   async store(req, res) {
     try {
       const { user_id } = req.params
