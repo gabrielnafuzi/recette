@@ -23,7 +23,7 @@ class AuthController {
         return res.status(403).json({ error: 'Senha inválida' })
       }
 
-      const token = jwt.sign({}, process.env.JWT_SECRET, {
+      const token = jwt.sign({}, JWT_SECRET, {
         subject: String(user.dataValues.id),
         expiresIn: '1d'
       })
