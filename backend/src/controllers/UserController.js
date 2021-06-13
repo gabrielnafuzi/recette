@@ -4,7 +4,7 @@ const { User } = require('../models')
 class UserController {
   async store(req, res) {
     try {
-      const { name, email, password, role } = req.body
+      const { name, email, password } = req.body
 
       const emailAlreadyExists = await User.findOne({
         where: { email }
@@ -20,8 +20,7 @@ class UserController {
       const newUser = await User.create({
         name,
         email,
-        password: hashedPassword,
-        role
+        password: hashedPassword
       })
 
       return res.status(201).json(newUser)

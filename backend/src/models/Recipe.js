@@ -6,15 +6,20 @@ class Recipe extends Model {
       {
         title: DataTypes.STRING,
         description: DataTypes.STRING,
-        preparation_time: DataTypes.STRING,
+        preparationTime: DataTypes.STRING,
         portions: DataTypes.INTEGER,
         ingredients: DataTypes.ARRAY(DataTypes.JSON),
-        steps: DataTypes.ARRAY(DataTypes.JSON)
+        steps: DataTypes.ARRAY(DataTypes.JSON),
+        status: DataTypes.ENUM('approved', 'disapproved', 'analysis')
       },
       { sequelize }
     )
 
     return this
+  }
+
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
   }
 }
 

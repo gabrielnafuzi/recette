@@ -39,6 +39,19 @@ module.exports = {
       steps: {
         type: Sequelize.ARRAY(Sequelize.JSON),
         allowNull: false
+      },
+      status: {
+        type: Sequelize.ENUM('approved', 'disapproved', 'analysis'),
+        defaultValue: 'analysis',
+        allowNull: true
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false
       }
     })
   },
@@ -46,10 +59,3 @@ module.exports = {
     await queryInterface.dropTable('recipes')
   }
 }
-
-// title
-// description
-// preparationTime
-// portions
-// ingredients[ { index: 0, text: '' } ]
-// steps[ { index: 0, text: '' } ]
