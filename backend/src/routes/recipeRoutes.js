@@ -1,10 +1,12 @@
 const { Router } = require('express')
 const { RecipeController } = require('../controllers')
+const { checkAuth, checkIsAdmin } = require('../middleware/auth')
 
 const recipeRoutes = Router()
 
-recipeRoutes.post('/:user_id', RecipeController.store)
 recipeRoutes.get('/', RecipeController.index)
-recipeRoutes.get('/:user_id', RecipeController.findByUser)
+recipeRoutes.get('/my-recipes', checkAuth, RecipeController.findByUser)
+recipeRoutes.get('/admin', checkAuth, checkIsAdmin, RecipeController.findAllToAdmin)
+recipeRoutes.post('/:user_id', checkAuth, RecipeController.store)
 
 module.exports = recipeRoutes

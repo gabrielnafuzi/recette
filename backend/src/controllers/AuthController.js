@@ -47,8 +47,6 @@ class AuthController {
 
     const user = await User.findByPk(userId)
 
-    console.log(user)
-
     return res.status(200).json({
       message: 'Dados recuperados com sucesso!',
       content: {

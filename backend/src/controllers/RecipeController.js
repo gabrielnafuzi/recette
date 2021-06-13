@@ -25,11 +25,15 @@ class RecipeController {
 
   async findByUser(req, res) {
     try {
-      const { user_id } = req.params
+      const { userId } = req
 
-      const user = await User.findByPk(user_id, {
+      const user = await User.findByPk(userId, {
         include: { association: 'recipes' }
       })
+
+      if (!user) {
+        return res.status(404).json({ error: 'Usuário não encontrado' })
+      }
 
       return res.status(200).json({
         message: `Receitas de ${user.name} recuperadas com sucesso!`,
@@ -39,6 +43,27 @@ class RecipeController {
       })
     } catch (error) {
       return res.status(500).json({ error: error.message })
+    }
+  }
+
+  async findAllToAdmin(req, res) {
+    try {
+      const recipes = await Recipe.findAll({
+        include: {
+          model: User,
+          as: 'user',
+          attributes: ['name']
+        }
+      })
+
+      return res.status(200).json({
+        message: 'Receitas recuperados com sucesso!',
+        content: {
+          recipes
+        }
+      })
+    } catch (e) {
+      return res.status(500).json({ error: e.message })
     }
   }
 
