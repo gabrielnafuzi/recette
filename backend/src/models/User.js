@@ -12,7 +12,7 @@ class User extends Model {
             return undefined
           }
         },
-        role: DataTypes.STRING
+        role: DataTypes.ENUM('admin', 'ordinary')
       },
       { sequelize }
     )
