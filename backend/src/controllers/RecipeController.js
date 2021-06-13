@@ -69,7 +69,7 @@ class RecipeController {
 
   async store(req, res) {
     try {
-      const { user_id } = req.params
+      const { userId: user_id } = req
       const {
         title,
         description,
@@ -96,6 +96,40 @@ class RecipeController {
       })
 
       return res.status(201).json(recipe)
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
+  async destroy(req, res) {
+    try {
+      const { userId } = req
+      const { recipe_id } = req.params
+
+      const recipe = await Recipe.findByPk(recipe_id)
+
+      if (!recipe) {
+        return res.status(404).json({ error: 'Receita não encontrada' })
+      }
+
+      if (userId !== String(recipe.user_id)) {
+        return res
+          .status(403)
+          .json({ error: 'Sem permissão para deletar essa receita' })
+      }
+
+      await Recipe.destroy({
+        where: {
+          id: recipe.id
+        }
+      })
+
+      return res.status(200).json({
+        message: 'Receita deletada com sucesso!',
+        content: {
+          recipe
+        }
+      })
     } catch (error) {
       return res.status(500).json({ error: error.message })
     }
