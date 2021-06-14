@@ -1,3 +1,4 @@
+const { checkAuth } = require('../middleware/auth')
 const { Recipe, User } = require('../models')
 
 class RecipeController {
@@ -64,6 +65,42 @@ class RecipeController {
       })
     } catch (e) {
       return res.status(500).json({ error: e.message })
+    }
+  }
+
+  async show(req, res) {
+    try {
+      const { recipe_id } = req.params
+      const { userId } = req
+
+      const recipe = await Recipe.findByPk(recipe_id)
+
+      if (!recipe) {
+        return res.status(404).json({ error: 'Receita não encontrada!' })
+      }
+
+      const baseSuccessResponse = {
+        message: 'Dados da receita recuperados com sucesso!',
+        content: {
+          recipe
+        }
+      }
+
+      if (recipe.status === 'approved') {
+        return res.status(200).json(baseSuccessResponse)
+      }
+
+      const user = await User.findByPk(userId)
+
+      if ((!user || user?.id !== recipe.user_id) && user?.role !== 'admin') {
+        return res
+          .status(403)
+          .json({ error: 'Sem permissão para ver essa receita!' })
+      }
+
+      return res.status(200).json(baseSuccessResponse)
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
     }
   }
 

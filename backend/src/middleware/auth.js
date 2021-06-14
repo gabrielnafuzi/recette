@@ -2,14 +2,24 @@ const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/authConfig')
 const User = require('../models/User')
 
-module.exports.checkAuth = (req, res, next) => {
-  const authHeader = req.headers.authorization
+const getHeaderToken = req => {
+  const authHeader = req?.headers?.authorization
 
   if (!authHeader) {
-    return res.status(401).json({ error: 'Token não fornecido' })
+    return null
   }
 
   const [, token] = authHeader.split(' ')
+
+  return token
+}
+
+module.exports.checkAuth = (req, res, next) => {
+  const token = getHeaderToken(req, res)
+
+  if (!token) {
+    return res.status(401).json({ error: 'Token não fornecido' })
+  }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET)
@@ -36,5 +46,17 @@ module.exports.checkIsAdmin = async (req, res, next) => {
     return next()
   } catch (e) {
     return res.status(401).json({ error })
+  }
+}
+
+module.exports.setUserIdOnReq = (req, res, next) => {
+  const token = getHeaderToken(req)
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET)
+
+    req.userId = decoded.sub
+  } finally {
+    return next()
   }
 }
