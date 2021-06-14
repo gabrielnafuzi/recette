@@ -1,16 +1,22 @@
-const { checkAuth } = require('../middleware/auth')
-const { Recipe, User } = require('../models')
+const { Recipe, User, Image } = require('../models')
 
 class RecipeController {
   async index(req, res) {
     try {
       const recipes = await Recipe.findAll({
         where: { status: 'approved' },
-        include: {
-          model: User,
-          as: 'user',
-          attributes: ['name']
-        }
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['name']
+          },
+          {
+            model: Image,
+            as: 'image',
+            attributes: ['path']
+          }
+        ]
       })
 
       return res.status(200).json({
@@ -29,7 +35,15 @@ class RecipeController {
       const { userId } = req
 
       const user = await User.findByPk(userId, {
-        include: { association: 'recipes' }
+        include: {
+          model: Recipe,
+          as: 'recipes',
+          include: {
+            model: Image,
+            as: 'image',
+            attributes: ['path']
+          }
+        }
       })
 
       if (!user) {
@@ -50,11 +64,18 @@ class RecipeController {
   async findAllToAdmin(req, res) {
     try {
       const recipes = await Recipe.findAll({
-        include: {
-          model: User,
-          as: 'user',
-          attributes: ['name']
-        }
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['name']
+          },
+          {
+            model: Image,
+            as: 'image',
+            attributes: ['path']
+          }
+        ]
       })
 
       return res.status(200).json({
@@ -106,6 +127,8 @@ class RecipeController {
 
   async store(req, res) {
     try {
+      console.log(req.file)
+
       const { userId: user_id } = req
       const {
         title,
@@ -122,15 +145,28 @@ class RecipeController {
         return res.status(404).json({ error: 'Usúario não encontrado' })
       }
 
-      const recipe = await Recipe.create({
-        user_id,
-        title,
-        description,
-        preparationTime,
-        portions,
-        ingredients,
-        steps
-      })
+      const image = {
+        path: req.file.filename
+      }
+
+      const recipe = await Recipe.create(
+        {
+          user_id,
+          title,
+          description,
+          preparationTime,
+          portions,
+          ingredients: JSON.parse(ingredients),
+          steps: JSON.parse(steps),
+          image
+        },
+        {
+          include: {
+            model: Image,
+            as: 'image'
+          }
+        }
+      )
 
       return res.status(201).json(recipe)
     } catch (error) {

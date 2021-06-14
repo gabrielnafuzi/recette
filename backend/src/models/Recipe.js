@@ -20,6 +20,7 @@ class Recipe extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
+    this.hasOne(models.Image, { foreignKey: 'recipe_id', as: 'image' })
   }
 }
 
