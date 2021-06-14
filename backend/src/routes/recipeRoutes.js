@@ -13,6 +13,7 @@ recipeRoutes.get(
   RecipeController.findAllToAdmin
 )
 recipeRoutes.post('/', checkAuth, RecipeController.store)
+recipeRoutes.patch('/:recipe_id', checkAuth, RecipeController.update)
 recipeRoutes.delete('/:recipe_id', checkAuth, RecipeController.destroy)
 
 module.exports = recipeRoutes

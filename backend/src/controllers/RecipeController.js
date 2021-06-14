@@ -101,6 +101,72 @@ class RecipeController {
     }
   }
 
+  async update(req, res) {
+    try {
+      const {
+        title,
+        description,
+        preparationTime,
+        portions,
+        ingredients,
+        status,
+        steps
+      } = req.body
+      const { userId } = req
+      const { recipe_id } = req.params
+
+      const user = await User.findByPk(userId, {
+        include: { association: 'recipes' }
+      })
+
+      if (!user) {
+        return res.status(404).json({ error: 'Usúario não encontrado' })
+      }
+
+      const recipe = user.recipes.find(({ id }) => String(id) === recipe_id)
+
+      if (!recipe && user.role !== 'admin') {
+        return res.status(404).json({ error: 'Receita não encontrada' })
+      }
+
+      if (userId !== String(recipe?.user_id) && user.role !== 'admin') {
+        return res
+          .status(403)
+          .json({ error: 'Sem permissão para editar essa receita' })
+      }
+
+      if (status && status !== recipe?.status && user.role !== 'admin') {
+        return res
+          .status(403)
+          .json({ error: 'Sem permissão para trocar o status dessa receita!' })
+      }
+
+      await Recipe.update(
+        {
+          title,
+          description,
+          preparationTime,
+          portions,
+          ingredients,
+          status,
+          steps
+        },
+        {
+          where: {
+            id: recipe_id
+          }
+        }
+      )
+
+      return res.status(200).json({
+        message: 'Receita atualizada com sucesso!',
+        content: {}
+      })
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
   async destroy(req, res) {
     try {
       const { userId } = req
