@@ -27,7 +27,12 @@ recipeRoutes.post(
   upload.single('image'),
   RecipeController.store
 )
-recipeRoutes.patch('/:recipe_id', checkAuth, RecipeController.update)
+recipeRoutes.patch(
+  '/:recipe_id',
+  checkAuth,
+  upload.single('image'),
+  RecipeController.update
+)
 recipeRoutes.delete('/:recipe_id', checkAuth, RecipeController.destroy)
 
 module.exports = recipeRoutes

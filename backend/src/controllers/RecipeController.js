@@ -122,8 +122,6 @@ class RecipeController {
 
   async store(req, res) {
     try {
-      console.log(req.file)
-
       const { userId: user_id } = req
       const {
         title,
@@ -209,15 +207,18 @@ class RecipeController {
           .json({ error: 'Sem permissão para trocar o status dessa receita!' })
       }
 
+      const image = req.file && { path: req.file.filename }
+
       await Recipe.update(
         {
           title,
           description,
           preparationTime,
           portions,
-          ingredients,
+          ingredients: ingredients && JSON.parse(ingredients),
+          steps: steps && JSON.parse(steps),
           status,
-          steps
+          image
         },
         {
           where: {
@@ -225,6 +226,8 @@ class RecipeController {
           }
         }
       )
+
+      if (image) await Image.update({ ...image }, { where: { recipe_id } })
 
       return res.status(200).json({
         message: 'Receita atualizada com sucesso!',
