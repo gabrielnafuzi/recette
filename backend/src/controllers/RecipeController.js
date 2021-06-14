@@ -1,4 +1,5 @@
 const { Recipe, User, Image } = require('../models')
+const { recipes_view: recipesView } = require('../views')
 
 class RecipeController {
   async index(req, res) {
@@ -21,9 +22,7 @@ class RecipeController {
 
       return res.status(200).json({
         message: 'Receitas recuperados com sucesso!',
-        content: {
-          recipes
-        }
+        content: recipesView.renderMany(recipes)
       })
     } catch (e) {
       return res.status(500).json({ error: e.message })
@@ -53,7 +52,7 @@ class RecipeController {
       return res.status(200).json({
         message: `Receitas de ${user.name} recuperadas com sucesso!`,
         content: {
-          recipes: user.recipes
+          recipes: recipesView.renderMany(user.recipes)
         }
       })
     } catch (error) {
@@ -80,9 +79,7 @@ class RecipeController {
 
       return res.status(200).json({
         message: 'Receitas recuperados com sucesso!',
-        content: {
-          recipes
-        }
+        content: recipesView.renderMany(recipes)
       })
     } catch (e) {
       return res.status(500).json({ error: e.message })
@@ -102,9 +99,7 @@ class RecipeController {
 
       const baseSuccessResponse = {
         message: 'Dados da receita recuperados com sucesso!',
-        content: {
-          recipe
-        }
+        content: recipesView.render(recipe)
       }
 
       if (recipe.status === 'approved') {
