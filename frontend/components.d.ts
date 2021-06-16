@@ -3,9 +3,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AddItem: typeof import('./src/components/AddItem.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
-    ItemList: typeof import('./src/components/ItemList.vue')['default']
   }
 }
 

@@ -1,6 +1,8 @@
 {
   "extends": "@antfu",
   "rules": {
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "arrow-parens": "off",
+    "curly": "off"
   }
 }
