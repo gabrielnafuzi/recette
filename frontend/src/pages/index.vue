@@ -10,8 +10,8 @@ import { useAuthStore } from '@/store'
 const auth = useAuthStore()
 
 const getData = async () => {
-  await auth.login('gabriel@email.com', 'Abc1234')
-  // await auth.getCurrentUser()
+  // await auth.login('gabriel@email.com', 'Abc12345')
+  await auth.getCurrentUser()
 }
 
 getData()
