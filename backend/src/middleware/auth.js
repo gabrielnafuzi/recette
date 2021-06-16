@@ -16,9 +16,10 @@ const getHeaderToken = req => {
 
 module.exports.checkAuth = (req, res, next) => {
   const token = getHeaderToken(req, res)
+  const unauthorizedMessage = 'Sem permissão! Faça Login para continuar'
 
   if (!token) {
-    return res.status(401).json({ error: 'Token não fornecido' })
+    return res.status(401).json({ error: unauthorizedMessage })
   }
 
   try {
@@ -28,7 +29,7 @@ module.exports.checkAuth = (req, res, next) => {
 
     return next()
   } catch (e) {
-    return res.status(401).json({ error: 'Token inválido' })
+    return res.status(401).json({ error: unauthorizedMessage })
   }
 }
 
