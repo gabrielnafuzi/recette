@@ -14,6 +14,18 @@
 
 <script lang="ts" setup>
 import { useCartStore } from '@/store/cart'
+import { api } from '@/services'
 
 const cart = useCartStore()
+
+const getData = async () => {
+  const { data } = await api.post('/auth/login', {
+    email: 'gabriel@email.com',
+    password: 'Abc12345',
+  })
+
+  console.log(data)
+}
+
+getData()
 </script>

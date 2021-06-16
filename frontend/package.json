@@ -1,12 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "dev": "vite --port 3000 --open",
+    "dev": "CHOKIDAR_USEPOLLING=true vite --port 3000 --open",
     "build": "cross-env NODE_ENV=production vite-ssg build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^4.11.2",
+    "axios": "^0.21.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-beta.2",
     "vue": "^3.0.11",
