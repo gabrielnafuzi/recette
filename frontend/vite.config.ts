@@ -17,7 +17,20 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    Pages(),
+    Pages({
+      extendRoute(route) {
+        const publicPaths = ['/', '/login', '/signup', '/recipes/:recipeId']
+
+        if (publicPaths.includes(route.path)) {
+          return route
+        }
+
+        return {
+          ...route,
+          meta: { auth: true },
+        }
+      },
+    }),
     Layouts(),
     ViteComponents({
       globalComponentsDeclaration: true,
