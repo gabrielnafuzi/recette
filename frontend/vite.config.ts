@@ -6,6 +6,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import ViteComponents from 'vite-plugin-components'
 import WindiCSS from 'vite-plugin-windicss'
+import ViteFonts from 'vite-plugin-fonts'
 
 export default defineConfig({
   resolve: {
@@ -41,6 +42,11 @@ export default defineConfig({
       ],
     }),
     ViteIcons(),
+    ViteFonts({
+      google: {
+        families: ['Nunito'],
+      },
+    }),
     WindiCSS({
       safelist: 'prose prose-sm m-auto text-left',
     }),

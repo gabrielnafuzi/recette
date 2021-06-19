@@ -6,6 +6,13 @@ body,
   padding: 0;
 }
 
+body,
+button,
+input,
+textarea {
+  font-family: 'Nunito', 'sans-serif';
+}
+
 html.dark {
   background: #121212;
 }
