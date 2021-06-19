@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col items-start max-w-3/4 mx-auto bg-gray-200 h-full p-4">
-    {{ auth.currentUser }}
+  <div class=" mx-auto bg-gray-200 h-full p-4">
+    <p class="text-green">
+      {{ auth.currentUser?.name }}
+    </p>
   </div>
 </template>
 
