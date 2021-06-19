@@ -1,5 +1,6 @@
 <template>
   <div class=" mx-auto bg-gray-200 h-full p-4">
+    <router-link to="/login" class="btn">aaa</router-link>
     <p class="text-green">
       {{ auth.currentUser?.name }}
     </p>
@@ -10,11 +11,4 @@
 import { useAuthStore } from '@/store'
 
 const auth = useAuthStore()
-
-const getData = async () => {
-  // await auth.login('gabriel@email.com', 'Abc12345')
-  await auth.getCurrentUser()
-}
-
-getData()
 </script>

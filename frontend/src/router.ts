@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
-
-// const auth = useAuthStore()
+import NProgress from 'nprogress'
 
 const routes = setupLayouts(generatedRoutes)
 
@@ -12,6 +11,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  NProgress.start()
+
   if (to.meta.auth) {
     const token = window.localStorage.token
 
@@ -24,6 +25,10 @@ router.beforeEach((to, from, next) => {
   }
 
   next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router
