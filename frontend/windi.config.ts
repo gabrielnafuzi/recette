@@ -20,7 +20,7 @@ export default defineConfig({
         'typo--base': '#4b5563',
         'typo--darken': '#333',
         'typo-lighten': '#6b7280',
-        border: '#e5e7eb',
+        'gray--lighten': '#c5cad3',
       },
       boxShadow: {
         lighten: '0px 1px 4px rgba(0, 0, 0, 0.12)',

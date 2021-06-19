@@ -1,9 +1,5 @@
 <template>
-  <button
-    v-bind="$attrs"
-    class="btn"
-    :class="[loading ? 'cursor-wait' : 'cursor-pointer']"
-  >
+  <button class="btn" :class="[loading ? 'cursor-wait' : 'cursor-pointer']">
     <span v-if="!loading" class="font-bold text-[22px] ">{{ text }}</span>
     <span v-else class="animate-spin spinner" />
   </button>
