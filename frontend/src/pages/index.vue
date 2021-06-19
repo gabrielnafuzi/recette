@@ -1,6 +1,6 @@
 <template>
   <div class=" mx-auto bg-gray-200 h-full p-4">
-    <router-link to="/login" class="btn">aaa</router-link>
+    <Button text="Entrar" />
     <p class="text-green">
       {{ auth.currentUser?.name }}
     </p>

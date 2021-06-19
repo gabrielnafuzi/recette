@@ -9,16 +9,17 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        orange: '#ff642f',
+        background: '#fafafa',
+        'orange--base': '#ff642f',
         'orange--darken': '#c2410c',
         'orange--lighten': '#fed7aa',
-        red: '#b91c1c',
+        'red--base': '#b91c1c',
         'red--lighten': '#fecaca',
-        green: '#15803d',
+        'green--base': '#15803d',
         'green--lighten': '#bbf7d0',
-        text: '#4b5563',
-        'text--darken': '#333',
-        'text-lighten': '#6b7280',
+        'typo--base': '#4b5563',
+        'typo--darken': '#333',
+        'typo-lighten': '#6b7280',
         border: '#e5e7eb',
       },
       boxShadow: {
