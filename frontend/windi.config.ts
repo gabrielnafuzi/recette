@@ -1,6 +1,5 @@
 /* eslint-disable quote-props */
 import { defineConfig } from 'vite-plugin-windicss'
-import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
 export default defineConfig({
@@ -22,23 +21,10 @@ export default defineConfig({
         'text-lighten': '#6b7280',
         border: '#e5e7eb',
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: '65ch',
-            color: 'inherit',
-            a: {
-              color: 'inherit',
-              opacity: 0.75,
-              fontWeight: '500',
-              textDecoration: 'underline',
-              '&:hover': {
-                opacity: 1,
-                color: colors.teal[600],
-              },
-            },
-          },
-        },
+      boxShadow: {
+        lighten: '0px 1px 4px rgba(0, 0, 0, 0.12)',
+        'lighten-2': '0px 0px 4px rgba(0, 0, 0, 0.15)',
+        darken: '0px 1px 4px rgba(0, 0, 0, 0.3)',
       },
     },
   },
