@@ -16,8 +16,3 @@ const getData = async () => {
 
 getData()
 </script>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
