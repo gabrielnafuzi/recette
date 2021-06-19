@@ -1,7 +1,11 @@
 <template>
   <div class="mx-auto h-full p-4">
-    <Input v-model="email" label="Email" placeholder="johndoe@email.com" />
-    {{ email }}
+    <Textarea
+      v-model="description"
+      label="Descrição"
+      placeholder="Qual a origem desta receita? Qual foi sua inspiração, por que é especial, o que a torna única, para quem você a cozinhou?"
+    />
+    {{ description }}
     <p class="text-green">
       {{ auth.currentUser?.name }}
     </p>
@@ -12,7 +16,7 @@
 import { useAuthStore } from '@/store'
 import { ref } from 'vue'
 
-const email = ref('')
+const description = ref('')
 
 const auth = useAuthStore()
 </script>
