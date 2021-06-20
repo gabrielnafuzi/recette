@@ -8,6 +8,7 @@ declare module 'vue' {
     Input: typeof import('./src/components/atoms/Input.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
+    FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
   }
 }
 

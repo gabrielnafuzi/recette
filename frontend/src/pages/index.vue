@@ -1,10 +1,15 @@
 <template>
   <div class="mx-auto h-full p-4">
-    <Textarea
-      v-model="description"
-      label="Descrição"
-      placeholder="Qual a origem desta receita? Qual foi sua inspiração, por que é especial, o que a torna única, para quem você a cozinhou?"
-    />
+    <FormCard>
+      <Button text="asd" loading disabled />
+      <!--
+        <Textarea
+        v-model="description"
+        label="Descrição"
+        placeholder="Qual a origem desta receita? Qual foi sua inspiração, por que é especial, o que a torna única, para quem você a cozinhou?"
+      />
+      -->
+    </FormCard>
     {{ description }}
     <p class="text-green">
       {{ auth.currentUser?.name }}

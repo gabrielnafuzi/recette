@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "CHOKIDAR_USEPOLLING=true vite --port 3000 --open",
+    "dev": "CHOKIDAR_USEPOLLING=true vite --port 3000",
     "build": "cross-env NODE_ENV=production vite-ssg build",
     "preview": "vite preview"
   },
