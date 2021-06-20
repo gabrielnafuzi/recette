@@ -1,5 +1,5 @@
 <template>
-  <div class="textarea-wrapper">
+  <div class="textarea-wrapper" :class="parentClass">
     <label v-if="label" class="label" :class="{ error }">{{ label }}</label>
     <textarea
       class="textarea"
@@ -24,6 +24,11 @@ export default defineComponent({
       default: '',
     },
     label: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    parentClass: {
       type: String,
       required: false,
       default: '',
@@ -71,7 +76,7 @@ export default defineComponent({
     font-normal text-base
     border-2 border-gray--lighten
     placeholder-gray--lighten
-    focus:outline-none focus:border-typo--base;
+    focus:(outline-none border-typo--base);
 }
 
 .textarea.error {

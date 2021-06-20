@@ -1,5 +1,5 @@
 <template>
-  <div class="input-wrapper">
+  <div class="input-wrapper" :class="parentClass">
     <label v-if="label" class="label" :class="{ error }">{{ label }}</label>
     <input
       class="input"
@@ -21,6 +21,11 @@ export default defineComponent({
   props: {
     modelValue: {
       type: [String, Number],
+      default: '',
+    },
+    parentClass: {
+      type: String,
+      required: false,
       default: '',
     },
     label: {
@@ -58,8 +63,7 @@ export default defineComponent({
 }
 
 .label {
-  @apply ml-1 mb-1
-    font-semibold text-lg text-typo--base;
+  @apply ml-1 font-semibold text-lg text-typo--base;
 }
 
 .label.error {
@@ -71,7 +75,7 @@ export default defineComponent({
   font-normal text-base
     border-2 border-gray--lighten
     placeholder-gray--lighten
-    focus:outline-none focus:border-typo--base;
+    focus:(outline-none border-typo--base);
 }
 
 .input.error {

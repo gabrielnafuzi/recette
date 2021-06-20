@@ -30,7 +30,7 @@ export default defineComponent({
     transition-all
     bg-orange--base text-white shadow-darken tracking-wider
     hover:bg-orange--darken
-    focus:ring-2 focus:ring-dark-100
-    disabled:bg-gray-300 disabled:opacity-80;
+    focus:(ring-2 ring-dark-100)
+    disabled:(bg-gray-300 opacity-80);
 }
 </style>

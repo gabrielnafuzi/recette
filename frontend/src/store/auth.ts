@@ -11,7 +11,7 @@ type LoginResponse = {
 const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
-    currentUser: {} as CurrentUser,
+    currentUser: null as CurrentUser | null,
     token: null as Token,
   }),
   getters: {},

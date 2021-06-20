@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to" class="nav-item" active-class="active">
+  <router-link :to="to" class="nav-item" exact-active-class="active">
     {{ text }}
   </router-link>
 </template>

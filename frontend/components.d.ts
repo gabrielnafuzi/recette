@@ -4,15 +4,20 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Footer: typeof import('./src/components/Footer.vue')['default']
+    Bullet: typeof import('./src/components/atoms/Bullet.vue')['default']
     Button: typeof import('./src/components/atoms/Button.vue')['default']
     Chip: typeof import('./src/components/atoms/Chip.vue')['default']
     Divider: typeof import('./src/components/atoms/Divider.vue')['default']
     Input: typeof import('./src/components/atoms/Input.vue')['default']
+    Link: typeof import('./src/components/atoms/Link.vue')['default']
     Logo: typeof import('./src/components/atoms/Logo.vue')['default']
+    NavItem: typeof import('./src/components/atoms/NavItem.vue')['default']
     Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
+    NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
+    Header: typeof import('./src/components/organisms/Header.vue')['default']
   }
 }
 

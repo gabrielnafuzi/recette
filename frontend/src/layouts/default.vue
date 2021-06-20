@@ -1,6 +1,3 @@
 <template>
-  <Container>
-    <router-view />
-    <Footer />
-  </Container>
+  <router-view />
 </template>
