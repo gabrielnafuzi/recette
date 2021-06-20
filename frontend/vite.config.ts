@@ -37,7 +37,7 @@ export default defineConfig({
       globalComponentsDeclaration: true,
       customComponentResolvers: [
         ViteIconsResolver({
-          componentPrefix: '',
+          componentPrefix: 'icon',
         }),
       ],
     }),
