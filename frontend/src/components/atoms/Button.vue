@@ -1,7 +1,7 @@
 <template>
   <button class="btn" :class="[loading ? 'cursor-wait' : 'cursor-pointer']">
     <span v-if="!loading" class="font-bold text-[22px] ">{{ text }}</span>
-    <span v-else class="animate-spin spinner" />
+    <Spinner v-else />
   </button>
 </template>
 
@@ -31,10 +31,6 @@ export default defineComponent({
     bg-orange--base text-white shadow-darken tracking-wider
     hover:bg-orange--darken
     focus:ring-2 focus:ring-dark-100
-    disabled:bg-gray-400 disabled:opacity-60;
-}
-
-.spinner {
-  @apply inline-flex h-9 w-9 rounded-full border-4 border-b-orange--base;
+    disabled:bg-gray-300 disabled:opacity-80;
 }
 </style>
