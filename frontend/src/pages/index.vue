@@ -1,6 +1,11 @@
 <template>
   <div class="mx-auto h-full p-4">
-    <Chip text="Reprovado" mode="error" />
+    <div class="flex">
+      <p>kkk</p>
+      <Divider />
+      <p>kkkkk</p>
+    </div>
+
     {{ description }}
     <p class="text-green">
       {{ auth.currentUser?.name }}
