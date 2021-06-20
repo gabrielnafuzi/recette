@@ -5,7 +5,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     Footer: typeof import('./src/components/Footer.vue')['default']
     Button: typeof import('./src/components/atoms/Button.vue')['default']
+    Chip: typeof import('./src/components/atoms/Chip.vue')['default']
+    Divider: typeof import('./src/components/atoms/Divider.vue')['default']
     Input: typeof import('./src/components/atoms/Input.vue')['default']
+    Logo: typeof import('./src/components/atoms/Logo.vue')['default']
+    Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
