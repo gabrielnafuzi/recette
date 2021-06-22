@@ -3,6 +3,7 @@
   "rules": {
     "space-before-function-paren": "off",
     "arrow-parens": "off",
-    "curly": "off"
+    "curly": "off",
+    "vue/singleline-html-element-content-newline": "off" 
   }
 }

@@ -5,7 +5,7 @@
   >
     <slot />
 
-    <span class="text-sm font-semibold tracking-wider" :class="`${colors.text}`">
+    <span class="text-base font-normal tracking-wider" :class="`${colors.text}`">
       {{ text }}
     </span>
   </div>
