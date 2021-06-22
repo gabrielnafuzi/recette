@@ -3,7 +3,6 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Footer: typeof import('./src/components/Footer.vue')['default']
     Bullet: typeof import('./src/components/atoms/Bullet.vue')['default']
     Button: typeof import('./src/components/atoms/Button.vue')['default']
     Chip: typeof import('./src/components/atoms/Chip.vue')['default']
@@ -17,6 +16,7 @@ declare module 'vue' {
     Container: typeof import('./src/components/bosons/Container.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
+    Footer: typeof import('./src/components/organisms/Footer.vue')['default']
     Header: typeof import('./src/components/organisms/Header.vue')['default']
   }
 }
