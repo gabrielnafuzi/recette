@@ -16,6 +16,7 @@ declare module 'vue' {
     Container: typeof import('./src/components/bosons/Container.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
+    RecipeCard: typeof import('./src/components/molecules/RecipeCard.vue')['default']
     Footer: typeof import('./src/components/organisms/Footer.vue')['default']
     Header: typeof import('./src/components/organisms/Header.vue')['default']
   }
