@@ -1,19 +1,21 @@
 <template>
   <nav>
-    <NavItem text="Receitas" to="/" class="ml-6" />
+    <NavItem text="Receitas" to="/" class="mr-6 sm:(mr-0 ml-6)" />
     <NavItem
       v-if="auth.currentUser"
       text="Minhas receitas"
       to="/my-recipes"
-      class="ml-6"
+      class="mr-6 sm:(mr-0 ml-6)"
     />
     <NavItem
       v-if="auth.currentUser?.role === 'admin'"
       text="Admin"
       to="/admin"
-      class="ml-6"
+      class="mr-6 sm:(mr-0 ml-6)"
     />
-    <NavItem v-if="auth.currentUser" text="Sair" to="/logout" class="ml-6" />
+
+    <NavItem v-if="!auth.currentUser" text="Entrar" to="/login" class="mr-6 sm:(mr-0 ml-6)" />
+    <NavItem v-if="auth.currentUser" text="Sair" to="/logout" class="mr-6 sm:(mr-0 ml-6)" />
   </nav>
 </template>
 
