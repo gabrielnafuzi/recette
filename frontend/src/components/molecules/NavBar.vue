@@ -1,19 +1,19 @@
 <template>
   <nav>
-    <NavItem text="Receitas" to="/" class="mr-6" />
+    <NavItem text="Receitas" to="/" class="ml-6" />
     <NavItem
       v-if="auth.currentUser"
       text="Minhas receitas"
       to="/my-recipes"
-      class="mr-6"
+      class="ml-6"
     />
     <NavItem
       v-if="auth.currentUser?.role === 'admin'"
       text="Admin"
       to="/admin"
-      class="mr-6"
+      class="ml-6"
     />
-    <NavItem text="Sair" to="/logout" class="mr-6" />
+    <NavItem v-if="auth.currentUser" text="Sair" to="/logout" class="ml-6" />
   </nav>
 </template>
 
