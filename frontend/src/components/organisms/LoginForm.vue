@@ -6,6 +6,7 @@
       label="Email"
       parent-class="mb-4"
       :disabled="isLoading"
+      :rules="[rules.required, rules.isEmailValid]"
     />
     <PasswordField v-model="password" parent-class="mb-6" :disabled="isLoading" />
 
@@ -17,6 +18,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/store'
 import { useRouter } from 'vue-router'
+import { rules } from '@/utils'
 
 const authStore = useAuthStore()
 

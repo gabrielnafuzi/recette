@@ -6,7 +6,7 @@
         v-bind="$attrs"
         ref="modelInput"
         :value="modelValue"
-        class="flex-1 bg-transparent placeholder-gray--lighten focus:outline-none"
+        class="flex-1 bg-transparent placeholder-gray--lighten text-typo--darken focus:outline-none"
         @input="updateModel"
       />
 
@@ -26,16 +26,22 @@
         @click="handleAppendClick"
       />
     </div>
-    <span v-if="error" class="text-red-500 text-sm ml-2 mt-[2px]">
+    <span
+      v-if="error"
+      class="text-red-500 text-sm ml-2 mt-[2px] animate-fade-in animated animate-duration-150"
+    >
       {{ errorMessage }}
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
+
+type Rule = (v: string) => boolean | string
 
 export default defineComponent({
+  name: 'Input',
   props: {
     modelValue: {
       type: [String, Number],
@@ -51,16 +57,6 @@ export default defineComponent({
       required: false,
       default: '',
     },
-    error: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    errorMessage: {
-      type: String,
-      required: false,
-      default: '',
-    },
     appendIcon: {
       type: String,
       required: false,
@@ -71,13 +67,40 @@ export default defineComponent({
       required: false,
       default: false,
     },
+    rules: {
+      type: Array as PropType<Rule[]>,
+      required: false,
+      default: () => [],
+    },
   },
   emits: ['update:modelValue', 'click:append'],
-  setup(_, { emit }) {
+  setup(props, { emit }) {
     const modelInput = ref<HTMLInputElement>()
+    const error = ref(false)
+    const errorMessage = ref('')
+
+    const runRules = (val: string) => {
+      for (const rule of props.rules) {
+        const result = rule(val)
+
+        if (typeof result === 'string') {
+          error.value = true
+          errorMessage.value = result
+
+          break
+        }
+
+        error.value = false
+        errorMessage.value = ''
+      }
+    }
 
     const updateModel = (event: Event) => {
-      emit('update:modelValue', (event.target as HTMLInputElement).value)
+      const val = (event.target as HTMLInputElement).value
+
+      emit('update:modelValue', val)
+
+      if (props.rules.length) runRules(val)
     }
 
     const focus = () => {
@@ -101,6 +124,9 @@ export default defineComponent({
       clearField,
       modelInput,
       handleAppendClick,
+      error,
+      errorMessage,
+      runRules,
     }
   },
 })
@@ -129,7 +155,9 @@ export default defineComponent({
                 ring-gray--lighten ring-opacity-20 text-typo--darken);
 }
 
-.input.error {
-  @apply border-red-500;
+.input-block.error {
+  @apply border-red-500
+  focus-within:(outline-none border-typo--lighten ring-2
+                ring-red-200 ring-opacity-20);
 }
 </style>

@@ -16,6 +16,7 @@ declare module 'vue' {
     Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
+    Form: typeof import('./src/components/molecules/Form.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
     RecipeCard: typeof import('./src/components/molecules/RecipeCard.vue')['default']

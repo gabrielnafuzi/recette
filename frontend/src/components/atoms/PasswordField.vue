@@ -13,6 +13,7 @@
 import { computed, defineComponent, nextTick, ref } from 'vue'
 
 export default defineComponent({
+  name: 'PasswordField',
   props: {
     modelValue: {
       type: [String, Number],
