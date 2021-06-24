@@ -7,6 +7,7 @@ declare module 'vue' {
     Button: typeof import('./src/components/atoms/Button.vue')['default']
     Chip: typeof import('./src/components/atoms/Chip.vue')['default']
     Divider: typeof import('./src/components/atoms/Divider.vue')['default']
+    FormCardTitle: typeof import('./src/components/atoms/FormCardTitle.vue')['default']
     Icon: typeof import('./src/components/atoms/Icon.vue')['default']
     Input: typeof import('./src/components/atoms/Input.vue')['default']
     Link: typeof import('./src/components/atoms/Link.vue')['default']
@@ -16,14 +17,15 @@ declare module 'vue' {
     Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
-    Form: typeof import('./src/components/molecules/Form.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
     RecipeCard: typeof import('./src/components/molecules/RecipeCard.vue')['default']
     Footer: typeof import('./src/components/organisms/Footer.vue')['default']
     Header: typeof import('./src/components/organisms/Header.vue')['default']
     LoginForm: typeof import('./src/components/organisms/LoginForm.vue')['default']
+    SignupForm: typeof import('./src/components/organisms/SignupForm.vue')['default']
     LoginTemplate: typeof import('./src/components/templates/LoginTemplate.vue')['default']
+    SignupTemplate: typeof import('./src/components/templates/SignupTemplate.vue')['default']
   }
 }
 
