@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { User } = require('../models')
+const { JWT_SECRET } = require('../config/authConfig')
 
 class UserController {
   async store(req, res) {
@@ -23,11 +25,19 @@ class UserController {
         password: hashedPassword
       })
 
+      const token = jwt.sign({}, JWT_SECRET, {
+        subject: String(newUser.dataValues.id),
+        expiresIn: '1d'
+      })
+
       const { password: pass, ...user } = newUser.dataValues
 
       return res.status(201).json({
         message: 'Conta criada com sucesso!',
-        user
+        content: {
+          token,
+          user
+        }
       })
     } catch (error) {
       return res.status(500).json({ error: error.message })
