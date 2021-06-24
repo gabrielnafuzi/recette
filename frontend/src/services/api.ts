@@ -31,7 +31,7 @@ api.interceptors.response.use(
   },
   async (error) => {
     const errorMessage = error.response.data.error
-    const status = error.response
+    const { status } = error.response
 
     notyf.error({
       message: errorMessage,

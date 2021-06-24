@@ -4,6 +4,7 @@
     "space-before-function-paren": "off",
     "arrow-parens": "off",
     "curly": "off",
-    "vue/singleline-html-element-content-newline": "off" 
+    "vue/singleline-html-element-content-newline": "off",
+    "brace-style": "off"
   }
 }

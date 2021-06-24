@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full text-center">
+  <footer class="w-full text-center mt-auto">
     <p class="text-typo-lighten">
       &copy; {{ new Date().getFullYear() }} Recette - Todos os diretos reservados
     </p>

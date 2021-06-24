@@ -22,11 +22,11 @@ const useAuthStore = defineStore({
         password,
       })
 
-      if (response.content) {
+      if (response?.content) {
         this.currentUser = response.content.user
       }
 
-      if (response.content?.token) {
+      if (response?.content?.token) {
         this.token = response.content.token
         localStorage.setItem('token', response.content.token)
       }
@@ -34,7 +34,7 @@ const useAuthStore = defineStore({
     async getCurrentUser() {
       const response: ApiResponse<{ user: CurrentUser }> = await api.get('/auth/me')
 
-      if (response.content?.user) {
+      if (response?.content?.user) {
         this.currentUser = response.content?.user
       }
     },

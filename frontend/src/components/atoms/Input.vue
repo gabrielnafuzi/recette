@@ -71,11 +71,11 @@ export default defineComponent({
 }
 
 .input {
-  @apply w-full rounded-md shadow-lighten-2 p-3
-  font-normal text-base
+  @apply w-full rounded-md shadow-lighten p-3 py-[10px]
+  font-normal text-lg
     border-2 border-gray--lighten
     placeholder-gray--lighten
-    focus:(outline-none border-typo--base);
+    focus:(outline-none border-typo--lighten ring-2 ring-typo-lighten ring-opacity-40 );
 }
 
 .input.error {
