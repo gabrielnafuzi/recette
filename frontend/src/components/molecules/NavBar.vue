@@ -22,6 +22,13 @@
     />
 
     <NavItem
+      v-if="!authStore.currentUser"
+      text="Criar conta"
+      to="/signup"
+      class="mr-6 sm:(mr-0 ml-6)"
+    />
+
+    <NavItem
       v-if="authStore.currentUser"
       text="Sair"
       class="mr-6 sm:(mr-0 ml-6)"
