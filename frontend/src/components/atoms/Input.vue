@@ -1,13 +1,31 @@
 <template>
   <div class="input-wrapper" :class="parentClass">
     <label v-if="label" class="label" :class="{ error }">{{ label }}</label>
-    <input
-      class="input"
-      :class="{ error }"
-      v-bind="$attrs"
-      :value="modelValue"
-      @input="updateModel"
-    />
+    <div class="input-block" :class="{ error }">
+      <input
+        v-bind="$attrs"
+        ref="modelInput"
+        :value="modelValue"
+        class="flex-1 bg-transparent placeholder-gray--lighten focus:outline-none"
+        @input="updateModel"
+      />
+
+      <Icon
+        v-if="clearable"
+        class="ml-1 text-current hover:cursor-pointer"
+        name="ion:close"
+        size="26"
+        @click="clearField"
+      />
+
+      <Icon
+        v-if="appendIcon"
+        class="ml-1 text-current hover:cursor-pointer"
+        :name="appendIcon"
+        size="26"
+        @click="handleAppendClick"
+      />
+    </div>
     <span v-if="error" class="text-red-500 text-sm ml-2 mt-[2px]">
       {{ errorMessage }}
     </span>
@@ -15,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   props: {
@@ -43,15 +61,46 @@ export default defineComponent({
       required: false,
       default: '',
     },
+    appendIcon: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    clearable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'click:append'],
   setup(_, { emit }) {
+    const modelInput = ref<HTMLInputElement>()
+
     const updateModel = (event: Event) => {
       emit('update:modelValue', (event.target as HTMLInputElement).value)
     }
 
+    const focus = () => {
+      modelInput.value?.focus()
+    }
+
+    const clearField = () => {
+      focus()
+
+      emit('update:modelValue', null)
+    }
+
+    const handleAppendClick = () => {
+      focus()
+
+      emit('click:append')
+    }
+
     return {
       updateModel,
+      clearField,
+      modelInput,
+      handleAppendClick,
     }
   },
 })
@@ -70,12 +119,14 @@ export default defineComponent({
   @apply text-red-500;
 }
 
-.input {
+.input-block {
   @apply w-full rounded-md shadow-lighten p-3 py-[10px]
-  font-normal text-lg
-    border-2 border-gray--lighten
-    placeholder-gray--lighten
-    focus:(outline-none border-typo--lighten ring-2 ring-typo-lighten ring-opacity-40 );
+    font-normal text-lg
+    flex items-center justify-between
+    border-1 border-gray--lighten
+    text-gray--lighten transition-colors
+    focus-within:(outline-none border-typo--lighten ring-2
+                ring-gray--lighten ring-opacity-20 text-typo--darken);
 }
 
 .input.error {
