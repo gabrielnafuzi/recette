@@ -1,8 +1,6 @@
 <template>
-  <FormCard class="w-full max-w-md mx-auto my-16 py-10 px-12">
-    <h1 class="text-typo--darken font-semibold text-[42px] tracking-wide mb-8">
-      Entrar
-    </h1>
+  <FormCard class="w-full max-w-md mx-auto mt-10 mb-16 py-10 px-12">
+    <FormCardTitle title="Entrar" />
 
     <LoginForm />
 
