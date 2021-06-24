@@ -1,7 +1,9 @@
 <template>
-  <router-link :to="to" class="nav-item" exact-active-class="active">
+  <router-link v-if="to" :to="to" class="nav-item" exact-active-class="active">
     {{ text }}
   </router-link>
+
+  <span v-else class="nav-item">{{ text }}</span>
 </template>
 
 <script lang="ts">
@@ -15,7 +17,8 @@ export default defineComponent({
     },
     to: {
       type: String,
-      required: true,
+      required: false,
+      default: '',
     },
   },
 })
@@ -23,7 +26,8 @@ export default defineComponent({
 
 <style scoped>
 .nav-item {
-  @apply font-semibold text-lg text-typo--darken transition-colors hover:text-orange--base;
+  @apply font-semibold text-lg text-typo--darken transition-colors
+  hover:(text-orange--base cursor-pointer);
 }
 
 .nav-item.active {
