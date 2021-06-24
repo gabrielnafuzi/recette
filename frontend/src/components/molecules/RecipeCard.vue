@@ -13,7 +13,7 @@
     />
 
     <Chip v-else :text="recipe.preparationTime" class="absolute top-2 left-2">
-      <icon-ion-time-outline class="text-light-500 mr-1" />
+      <Icon name="ion:time-outline" class="text-light-500 mr-1" />
     </Chip>
 
     <img class="rounded-t w-full h-48 object-cover" :src="recipe.image.url" />
