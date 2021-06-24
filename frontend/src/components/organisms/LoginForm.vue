@@ -19,39 +19,28 @@
   </form>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
 import { useAuthStore } from '@/store'
 import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 
-export default defineComponent({
-  setup() {
-    const router = useRouter()
+const router = useRouter()
 
-    const isLoading = ref(false)
-    const email = ref('')
-    const password = ref('')
+const isLoading = ref(false)
+const email = ref('')
+const password = ref('')
 
-    const handleLogin = async () => {
-      isLoading.value = true
+const handleLogin = async () => {
+  isLoading.value = true
 
-      try {
-        await authStore.login(email.value, password.value)
+  try {
+    await authStore.login(email.value, password.value)
 
-        router.push(authStore.currentUser?.role === 'admin' ? '/admin' : '/my-receipes')
-      } finally {
-        isLoading.value = false
-      }
-    }
-
-    return {
-      isLoading,
-      handleLogin,
-      email,
-      password,
-    }
-  },
-})
+    router.push(authStore.currentUser?.role === 'admin' ? '/admin' : '/my-receipes')
+  } finally {
+    isLoading.value = false
+  }
+}
 </script>
