@@ -7,14 +7,8 @@
       parent-class="mb-4"
       :disabled="isLoading"
     />
-    <Input
-      v-model="password"
-      placeholder="************"
-      label="Senha"
-      type="password"
-      parent-class="mb-6"
-      :disabled="isLoading"
-    />
+    <PasswordField v-model="password" parent-class="mb-6" :disabled="isLoading" />
+
     <Button type="submit" text="Entrar" :loading="isLoading" :disabled="isLoading" />
   </form>
 </template>
