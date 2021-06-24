@@ -2,7 +2,9 @@ import axios, { AxiosInstance } from 'axios'
 import { useAuthStore } from '@/store'
 import { Notyf } from 'notyf'
 
-const notyf = new Notyf()
+const notyf = new Notyf({
+  duration: 4000,
+})
 
 const token = window.localStorage.token
 
@@ -25,7 +27,10 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => {
-    notyf.success(response.data.message)
+    notyf.success({
+      message: response.data.message,
+      position: { x: 'left', y: 'bottom' },
+    })
 
     return response.data
   },
@@ -42,6 +47,8 @@ api.interceptors.response.use(
     if (status === 401) {
       // Log out user
     }
+
+    return Promise.reject(errorMessage)
   },
 )
 
