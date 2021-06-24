@@ -23,7 +23,12 @@ class UserController {
         password: hashedPassword
       })
 
-      return res.status(201).json(newUser)
+      const { password: pass, ...user } = newUser.dataValues
+
+      return res.status(201).json({
+        message: 'Conta criada com sucesso!',
+        user
+      })
     } catch (error) {
       return res.status(500).json({ error: error.message })
     }
