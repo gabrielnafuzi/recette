@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.5",
-    "@iconify/json": "^1.1.351",
+    "@iconify/json": "^1.1.360",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@vitejs/plugin-vue": "^1.2.3",
@@ -27,8 +27,8 @@
     "vite": "^2.3.5",
     "vite-plugin-components": "^0.10.4",
     "vite-plugin-fonts": "^0.2.2",
-    "vite-plugin-icons": "^0.6.0",
     "vite-plugin-pages": "^0.12.2",
+    "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-vue-layouts": "^0.3.1",
     "vite-plugin-windicss": "^0.16.7",
     "vue-tsc": "^0.1.6"
