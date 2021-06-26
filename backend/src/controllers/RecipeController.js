@@ -91,7 +91,15 @@ class RecipeController {
       const { recipe_id } = req.params
       const { userId } = req
 
-      const recipe = await Recipe.findByPk(recipe_id)
+      const recipe = await Recipe.findByPk(recipe_id, {
+        include: [
+          {
+            model: Image,
+            as: 'image',
+            attributes: ['path']
+          }
+        ]
+      })
 
       if (!recipe) {
         return res.status(404).json({ error: 'Receita não encontrada!' })
