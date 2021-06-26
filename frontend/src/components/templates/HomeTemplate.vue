@@ -1,5 +1,12 @@
 <template>
-  <HomeTemplate />
+  <RecipeListGrid>
+    <RecipeCard
+      v-for="recipe in recipeStore.recipes"
+      :key="recipe.id"
+      :recipe="recipe"
+      :to="`/recipes/${recipe.id}`"
+    />
+  </RecipeListGrid>
 </template>
 
 <script lang="ts" setup>
@@ -11,8 +18,3 @@ const getRecipes = async () => await recipeStore.list()
 
 getRecipes()
 </script>
-
-<route lang="yaml">
-meta:
-  layout: recette
-</route>
