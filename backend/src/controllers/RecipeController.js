@@ -191,7 +191,7 @@ class RecipeController {
 
       const recipe = user.recipes.find(({ id }) => String(id) === recipe_id)
 
-      if (!recipe && user.role !== 'admin') {
+      if (!recipe) {
         return res.status(404).json({ error: 'Receita não encontrada' })
       }
 
