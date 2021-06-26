@@ -14,6 +14,7 @@ declare module 'vue' {
     Logo: typeof import('./src/components/atoms/Logo.vue')['default']
     NavItem: typeof import('./src/components/atoms/NavItem.vue')['default']
     PasswordField: typeof import('./src/components/atoms/PasswordField.vue')['default']
+    SectionTitle: typeof import('./src/components/atoms/SectionTitle.vue')['default']
     Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
@@ -27,6 +28,7 @@ declare module 'vue' {
     SignupForm: typeof import('./src/components/organisms/SignupForm.vue')['default']
     HomeTemplate: typeof import('./src/components/templates/HomeTemplate.vue')['default']
     LoginTemplate: typeof import('./src/components/templates/LoginTemplate.vue')['default']
+    RecipeDetailsTemplate: typeof import('./src/components/templates/RecipeDetailsTemplate.vue')['default']
     SignupTemplate: typeof import('./src/components/templates/SignupTemplate.vue')['default']
   }
 }

@@ -22,6 +22,17 @@ const useRecipeStore = defineStore({
         throw new Error(e)
       }
     },
+    async show(id: number | string) {
+      try {
+        const response: ApiResponse<Recipe> = await api.get(`/recipes/${id}`)
+
+        if (response.content) {
+          this.recipe = response.content
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
   },
 })
 
