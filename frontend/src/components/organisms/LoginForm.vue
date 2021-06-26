@@ -34,7 +34,7 @@ const handleLogin = async () => {
   try {
     await authStore.login(email.value, password.value)
 
-    router.push(authStore.currentUser?.role === 'admin' ? '/admin' : '/my-receipes')
+    router.push(authStore.currentUser?.role === 'admin' ? '/admin' : '/my-recipes')
   } finally {
     isLoading.value = false
   }

@@ -61,7 +61,7 @@ const handleSignup = async () => {
       password: password.value,
     })
 
-    router.push('/my-receipes')
+    router.push('/my-recipes')
   } finally {
     isLoading.value = false
   }
