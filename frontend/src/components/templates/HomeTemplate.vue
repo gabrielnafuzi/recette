@@ -1,4 +1,6 @@
 <template>
+  <SectionTitle title="Receitas mais recentes" class="mt-5" />
+
   <RecipeListGrid>
     <RecipeCard
       v-for="recipe in recipeStore.recipes"
@@ -11,6 +13,7 @@
 
 <script lang="ts" setup>
 import { useRecipeStore } from '@/store'
+import SectionTitle from '../atoms/SectionTitle.vue'
 
 const recipeStore = useRecipeStore()
 </script>
