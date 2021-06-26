@@ -17,6 +17,7 @@ declare module 'vue' {
     Spinner: typeof import('./src/components/atoms/Spinner.vue')['default']
     Textarea: typeof import('./src/components/atoms/Textarea.vue')['default']
     Container: typeof import('./src/components/bosons/Container.vue')['default']
+    RecipeListGrid: typeof import('./src/components/bosons/RecipeListGrid.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']
     RecipeCard: typeof import('./src/components/molecules/RecipeCard.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     Header: typeof import('./src/components/organisms/Header.vue')['default']
     LoginForm: typeof import('./src/components/organisms/LoginForm.vue')['default']
     SignupForm: typeof import('./src/components/organisms/SignupForm.vue')['default']
+    HomeTemplate: typeof import('./src/components/templates/HomeTemplate.vue')['default']
     LoginTemplate: typeof import('./src/components/templates/LoginTemplate.vue')['default']
     SignupTemplate: typeof import('./src/components/templates/SignupTemplate.vue')['default']
   }

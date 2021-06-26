@@ -11,8 +11,3 @@ const getRecipes = async () => await recipeStore.list()
 
 getRecipes()
 </script>
-
-<route lang="yaml">
-meta:
-  layout: recette
-</route>

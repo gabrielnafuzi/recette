@@ -7,6 +7,7 @@ const useRecipeStore = defineStore({
   id: 'recipe',
   state: () => ({
     recipes: [] as Recipe[],
+    recipe: {} as Recipe,
   }),
   getters: {},
   actions: {

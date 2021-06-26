@@ -13,8 +13,4 @@
 import { useRecipeStore } from '@/store'
 
 const recipeStore = useRecipeStore()
-
-const getRecipes = async () => await recipeStore.list()
-
-getRecipes()
 </script>

@@ -1,3 +1,7 @@
 <template>
-  <router-view />
+  <Container>
+    <Header />
+    <router-view />
+    <Footer />
+  </Container>
 </template>

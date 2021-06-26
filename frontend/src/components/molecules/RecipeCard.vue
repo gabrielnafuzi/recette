@@ -1,9 +1,9 @@
 <template>
-  <router-link
-    :to="to"
+  <div
     class="rounded shadow-darken
       transition-all ease-in-out duration-300 transform hover:scale-103 cursor-pointer
     "
+    @click="go"
   >
     <Chip
       v-if="showStatus"
@@ -30,13 +30,15 @@
         <slot name="actions" />
       </div>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
+import { useRouter } from 'vue-router'
 import { Recipe } from '@/models'
 import { StatusTitles, StatusModes } from '@/types'
+import { useRecipeStore } from '@/store'
 
 export default defineComponent({
   props: {
@@ -58,7 +60,18 @@ export default defineComponent({
     const statusTitle = computed(() => StatusTitles[props.recipe.status])
     const statusMode = computed(() => StatusModes[props.recipe.status])
 
-    return { statusTitle, statusMode }
+    const router = useRouter()
+    const recipeStore = useRecipeStore()
+
+    const go = () => {
+      if (props.to) {
+        recipeStore.recipe = props.recipe
+
+        router.push(props.to)
+      }
+    }
+
+    return { statusTitle, statusMode, go }
   },
 })
 </script>
