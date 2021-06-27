@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRecipeStore } from '@/store'
 
@@ -19,5 +18,5 @@ if (!Object.keys(recipeStore.recipe).length) {
   getRecipe()
 }
 
-onMounted(() => window.scrollTo({ top: 0 }))
+window.scrollTo({ top: 0 })
 </script>
