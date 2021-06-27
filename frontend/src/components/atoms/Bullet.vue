@@ -10,7 +10,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
     index: {
-      type: String,
+      type: [Number, String],
       required: false,
       default: '',
     },

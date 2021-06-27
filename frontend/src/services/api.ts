@@ -3,7 +3,8 @@ import { useAuthStore } from '@/store'
 import { Notyf } from 'notyf'
 
 const notyf = new Notyf({
-  duration: 4000,
+  duration: 3000,
+  dismissible: true,
 })
 
 const token = window.localStorage.token
@@ -27,9 +28,12 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => {
+    notyf.dismissAll()
+
     notyf.success({
       message: response.data.message,
       position: { x: 'left', y: 'bottom' },
+      duration: 2000,
     })
 
     return response.data
@@ -41,7 +45,6 @@ api.interceptors.response.use(
     notyf.error({
       message: errorMessage,
       position: { x: 'center', y: 'top' },
-      dismissible: true,
     })
 
     if (status === 401) {

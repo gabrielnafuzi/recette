@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="flex flex-wrap">
     <NavItem text="Receitas" to="/" class="mr-6 sm:(mr-0 ml-6)" />
     <NavItem
       v-if="authStore.currentUser"

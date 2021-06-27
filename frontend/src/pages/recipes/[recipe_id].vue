@@ -1,11 +1,13 @@
 <template>
-  <RecipeDetailsTemplate />
+  <div>
+    <RecipeDetailsTemplate />
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRecipeStore } from '@/store'
-import RecipeDetailsTemplate from '@/components/templates/RecipeDetailsTemplate.vue'
 
 const route = useRoute()
 
@@ -16,4 +18,6 @@ const getRecipe = async () => await recipeStore.show(route.params.recipe_id as s
 if (!Object.keys(recipeStore.recipe).length) {
   getRecipe()
 }
+
+onMounted(() => window.scrollTo({ top: 0 }))
 </script>
