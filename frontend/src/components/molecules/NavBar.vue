@@ -38,16 +38,19 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore } from '@/store'
+import { useAuthStore, useRecipeStore } from '@/store'
 import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
+const recipeStore = useRecipeStore()
 const router = useRouter()
 
 const logout = () => {
   authStore.$reset()
+  recipeStore.$reset()
+
   window.localStorage.removeItem('token')
 
-  router.push('/login')
+  router.push('/')
 }
 </script>

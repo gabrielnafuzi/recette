@@ -23,7 +23,9 @@
         <h2 class="text-xl font-bold truncate mt-1 text-typo--base">
           {{ recipe.title }}
         </h2>
-        <p class="text-base text-typo-lighten mt-1">Receita de {{ recipe.user.name }}</p>
+        <p v-if="showOwnerName" class="text-base text-typo-lighten mt-1">
+          Receita de {{ recipe.user.name }}
+        </p>
       </div>
 
       <div class="flex p-4">
@@ -54,6 +56,11 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: false,
+    },
+    showOwnerName: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   setup(props) {

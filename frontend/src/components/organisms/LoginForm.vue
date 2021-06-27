@@ -17,12 +17,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/store'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { rules } from '@/utils'
 
 const authStore = useAuthStore()
 
 const router = useRouter()
+const route = useRoute()
 
 const isLoading = ref(false)
 const email = ref('')
@@ -33,6 +34,10 @@ const handleLogin = async () => {
 
   try {
     await authStore.login(email.value, password.value)
+
+    if (route.query.redirect) {
+      return router.push(route.query.redirect as string)
+    }
 
     router.push(authStore.currentUser?.role === 'admin' ? '/admin' : '/my-recipes')
   } finally {

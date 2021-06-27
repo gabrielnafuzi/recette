@@ -7,13 +7,13 @@ const notyf = new Notyf({
   dismissible: true,
 })
 
-const token = window.localStorage.token
-
 const api: AxiosInstance = axios.create({
   baseURL: 'http://localhost:3333',
 })
 
 api.interceptors.request.use((config) => {
+  const token = window.localStorage.token
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
 

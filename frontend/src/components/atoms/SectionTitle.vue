@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h1 class="text-typo--darken text-2xl font-bold" v-bind="$attrs">{{ title }}</h1>
+    <div class="flex items-center justify-between">
+      <h1 class="text-typo--darken text-2xl font-bold" v-bind="$attrs">{{ title }}</h1>
+
+      <slot name="actions" />
+    </div>
     <Divider />
   </div>
 </template>

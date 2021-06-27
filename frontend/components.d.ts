@@ -35,6 +35,7 @@ declare module 'vue' {
     SignupForm: typeof import('./src/components/organisms/SignupForm.vue')['default']
     HomeTemplate: typeof import('./src/components/templates/HomeTemplate.vue')['default']
     LoginTemplate: typeof import('./src/components/templates/LoginTemplate.vue')['default']
+    MyRecipesTemplate: typeof import('./src/components/templates/MyRecipesTemplate.vue')['default']
     RecipeDetailsTemplate: typeof import('./src/components/templates/RecipeDetailsTemplate.vue')['default']
     SignupTemplate: typeof import('./src/components/templates/SignupTemplate.vue')['default']
   }

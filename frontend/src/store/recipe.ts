@@ -8,6 +8,7 @@ const useRecipeStore = defineStore({
   state: () => ({
     recipes: [] as Recipe[],
     recipe: {} as Recipe,
+    currentUserRecipes: [] as Recipe[],
   }),
   getters: {},
   actions: {
@@ -17,6 +18,19 @@ const useRecipeStore = defineStore({
 
         if (response.content) {
           this.recipes = response.content
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
+    async listOfCurrentUser() {
+      try {
+        const response: ApiResponse<{ recipes: Recipe[] }> = await api.get(
+          '/recipes/my-recipes',
+        )
+
+        if (response.content?.recipes) {
+          this.currentUserRecipes = response.content.recipes
         }
       } catch (e) {
         throw new Error(e)

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center items-center py-1 px-2 rounded-full max-w-28 shadow-lighten-2"
+    class="flex justify-center items-center py-1 px-2 rounded-full max-w-28 shadow-darken"
     :class="`${colors.background}`"
   >
     <slot />
