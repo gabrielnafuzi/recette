@@ -47,6 +47,13 @@ const useRecipeStore = defineStore({
         throw new Error(e)
       }
     },
+    async destroy(id: number | string) {
+      try {
+        await api.delete(`/recipes/${id}`)
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
   },
 })
 

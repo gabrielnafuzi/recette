@@ -4,7 +4,7 @@
       <Icon name="ion-pencil-outline" size="24" />
     </button>
 
-    <button class="btn-icon" @click.stop="goToEdit">
+    <button class="btn-icon" @click.stop="$emit('delete-recipe', recipeId)">
       <Icon name="ion-trash-outline" size="24" class="text-red--base" />
     </button>
   </div>

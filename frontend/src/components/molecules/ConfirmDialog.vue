@@ -31,10 +31,22 @@
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button type="button" class="confirm-btn" @click="$emit('confirm')">
-            Confirmar
+          <button
+            type="button"
+            class="confirm-btn"
+            :disabled="loading"
+            @click="$emit('confirm')"
+          >
+            <span v-if="!loading">Confirmar</span>
+            <Spinner v-else class="w-5 h-5 min-w-1 min-h-1" />
           </button>
-          <button type="button" class="cancel-btn" @click="$emit('cancel')">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            :disabled="loading"
+            @click="$emit('cancel')"
+          >
             Cancelar
           </button>
         </div>
@@ -55,6 +67,11 @@ defineProps({
     type: String,
     required: true,
   },
+  loading: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 </script>
 
@@ -71,11 +88,12 @@ defineProps({
 }
 
 .confirm-btn {
-  @apply w-full inline-flex justify-center rounded-md border border-transparent
+  @apply w-full flex items-center justify-center min-w-24 rounded-md border border-transparent
         px-4 py-2 bg-red-600 text-base font-medium text-white shadow-sm
         hover:bg-red-700
         focus:(outline-none ring-2 ring-offset-2 ring-red-500)
-        sm:(ml-3 w-auto text-sm);
+        sm:(ml-3 w-auto text-sm)
+        disabled:(bg-gray-300 opacity-80);
 }
 
 .cancel-btn {
@@ -83,6 +101,7 @@ defineProps({
         shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700
       hover:bg-gray-50
         focus:(outline-none ring-2 ring-offset-2 ring-green--base)
-        sm:(mt-0 ml-3 w-auto text-sm);
+        sm:(mt-0 ml-3 w-auto text-sm)
+        disabled:(bg-gray-300 opacity-80);
 }
 </style>

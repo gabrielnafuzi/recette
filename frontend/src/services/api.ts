@@ -28,8 +28,6 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => {
-    notyf.dismissAll()
-
     notyf.success({
       message: response.data.message,
       position: { x: 'left', y: 'bottom' },
