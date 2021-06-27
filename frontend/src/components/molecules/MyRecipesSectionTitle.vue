@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-10">
     <SectionTitle title="Minhas receitas">
       <template #actions>
         <router-link
