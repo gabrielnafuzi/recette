@@ -1,0 +1,88 @@
+<template>
+  <div
+    class="fixed z-10 inset-0 overflow-y-auto"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="modal-wrapper">
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        aria-hidden="true"
+      />
+
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+        &#8203;
+      </span>
+
+      <div class="content-box animated animate-fade-in-up animate-duration-300">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <h3 class="text-2xl leading-6 font-medium text-typo--base">
+                {{ title }}
+              </h3>
+              <div class="mt-2">
+                <p class="text-base text-gray-500">
+                  {{ description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" class="confirm-btn" @click="$emit('confirm')">
+            Confirmar
+          </button>
+          <button type="button" class="cancel-btn" @click="$emit('cancel')">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+})
+</script>
+
+<style scoped>
+.modal-wrapper {
+  @apply flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center
+          sm:(block p-0);
+}
+
+.content-box {
+  @apply inline-block align-bottom bg-white rounded-lg text-left overflow-hidden
+        shadow-xl transform transition-all
+        sm:(my-8 align-middle max-w-lg w-full);
+}
+
+.confirm-btn {
+  @apply w-full inline-flex justify-center rounded-md border border-transparent
+        px-4 py-2 bg-red-600 text-base font-medium text-white shadow-sm
+        hover:bg-red-700
+        focus:(outline-none ring-2 ring-offset-2 ring-red-500)
+        sm:(ml-3 w-auto text-sm);
+}
+
+.cancel-btn {
+  @apply mt-3 w-full inline-flex justify-center rounded-md border border-gray-300
+        shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700
+      hover:bg-gray-50
+        focus:(outline-none ring-2 ring-offset-2 ring-green--base)
+        sm:(mt-0 ml-3 w-auto text-sm);
+}
+</style>
