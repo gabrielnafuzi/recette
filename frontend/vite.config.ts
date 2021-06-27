@@ -20,7 +20,7 @@ export default defineConfig({
     }),
     Pages({
       extendRoute(route) {
-        const publicPaths = ['/', '/login', '/signup', '/recipes/:recipeId']
+        const publicPaths = ['/', '/login', '/signup', '/recipes/:recipe_id']
 
         if (publicPaths.includes(route.path)) {
           return route

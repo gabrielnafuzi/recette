@@ -1,5 +1,5 @@
 <template>
-  <FormCard class="w-full max-w-md mx-auto mt-10 mb-16 py-10 px-12">
+  <FormCard class="w-full max-w-md mx-auto mt-18 mb-16 py-10 px-12">
     <FormCardTitle title="Entrar" />
 
     <LoginForm />
