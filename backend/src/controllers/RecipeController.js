@@ -143,7 +143,7 @@ class RecipeController {
       const user = await User.findByPk(user_id)
 
       if (!user) {
-        return res.status(404).json({ error: 'Usúario não encontrado' })
+        return res.status(404).json({ error: 'Usuário não encontrado' })
       }
 
       const image = {
@@ -194,7 +194,7 @@ class RecipeController {
       })
 
       if (!user) {
-        return res.status(404).json({ error: 'Usúario não encontrado' })
+        return res.status(404).json({ error: 'Usuário não encontrado' })
       }
 
       const recipe = user.recipes.find(({ id }) => String(id) === recipe_id)
