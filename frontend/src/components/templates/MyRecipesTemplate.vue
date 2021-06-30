@@ -3,9 +3,7 @@
     <MyRecipesSectionTitle />
 
     <MyRecipesList v-if="hasRecipes" />
-    <p v-else class="text-center mt-10 font-semibold text-2xl">
-      Você não possui nenhuma receita...
-    </p>
+    <NoReceipesMessage v-else text="Você não possui nenhuma receita..." />
   </div>
 </template>
 

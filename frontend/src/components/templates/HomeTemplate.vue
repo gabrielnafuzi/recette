@@ -1,7 +1,7 @@
 <template>
   <SectionTitle title="Receitas mais recentes" class="mt-5" />
 
-  <RecipeListGrid>
+  <RecipeListGrid v-if="recipeStore.recipes.length">
     <RecipeCard
       v-for="recipe in recipeStore.recipes"
       :key="recipe.id"
@@ -9,11 +9,14 @@
       :to="`/recipes/${recipe.id}`"
     />
   </RecipeListGrid>
+
+  <NoReceipesMessage v-else text="Nenhuma receita aprovada até o momento..." />
 </template>
 
 <script lang="ts" setup>
 import { useRecipeStore } from '@/store'
 import SectionTitle from '../atoms/SectionTitle.vue'
+import NoReceipesMessage from '../atoms/NoReceipesMessage.vue'
 
 const recipeStore = useRecipeStore()
 </script>
