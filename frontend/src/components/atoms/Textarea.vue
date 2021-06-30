@@ -45,7 +45,7 @@ const updateModel = (event: Event) => {
 
 <style scoped>
 .textarea-wrapper {
-  @apply flex flex-col w-full max-w-[400px] items-start justify-center;
+  @apply flex flex-col w-full max-w-full items-start justify-center;
 }
 
 .label {
@@ -58,11 +58,13 @@ const updateModel = (event: Event) => {
 }
 
 .textarea {
-  @apply w-full h-40 rounded-md shadow-lighten-2 p-3
-    font-normal text-base
-    border-2 border-gray--lighten
+  @apply w-full max-w-full h-40 rounded-md shadow-lighten p-3
+    font-normal text-lg
+    border-1 border-gray--lighten
     placeholder-gray--lighten
-    focus:(outline-none border-typo--base);
+  bg-white text-gray--lighten transition-colors
+    focus-within:(outline-none border-typo--lighten ring-2
+                ring-gray--lighten ring-opacity-20 text-typo--darken);
 }
 
 .textarea.error {

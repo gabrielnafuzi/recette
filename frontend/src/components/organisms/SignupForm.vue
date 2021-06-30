@@ -4,6 +4,7 @@
       v-model="name"
       placeholder="John Doe"
       label="Nome"
+      required
       parent-class="mb-4"
       :disabled="isLoading"
     />
@@ -12,18 +13,26 @@
       v-model="email"
       placeholder="johndoe@email.com"
       label="Email"
+      type="email"
+      required
       parent-class="mb-4"
       :disabled="isLoading"
       :rules="[rules.required, rules.isEmailValid]"
     />
 
-    <PasswordField v-model="password" parent-class="mb-6" :disabled="isLoading" />
+    <PasswordField
+      v-model="password"
+      parent-class="mb-6"
+      :disabled="isLoading"
+      required
+    />
     <PasswordField
       v-model="confirmPassword"
       parent-class="mb-6"
       :disabled="isLoading"
       label="Confirme sua senha"
       :rules="confirmPasswordRule"
+      required
     />
 
     <Button type="submit" text="Cadastrar" :loading="isLoading" :disabled="isLoading" />

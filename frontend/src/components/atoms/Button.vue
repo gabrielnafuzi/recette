@@ -22,7 +22,7 @@ defineProps({
 <style scoped>
 .btn {
   @apply px-4 py-1 rounded-md flex items-center justify-center outline-none
-    w-full max-w-[400px] h-[50px]
+    w-full max-w-full h-[50px]
     transition-all
     bg-orange--base text-white shadow-darken tracking-wider
     hover:bg-orange--darken

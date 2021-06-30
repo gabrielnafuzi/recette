@@ -111,7 +111,7 @@ const handleAppendClick = () => {
 
 <style scoped>
 .input-wrapper {
-  @apply flex flex-col w-full max-w-[400px] items-start justify-center;
+  @apply flex flex-col w-full max-w-full items-start justify-center;
 }
 
 .label {
@@ -123,11 +123,11 @@ const handleAppendClick = () => {
 }
 
 .input-block {
-  @apply w-full rounded-md shadow-lighten p-3 py-[10px]
+  @apply w-full max-w-full rounded-md shadow-lighten p-3 py-[10px]
     font-normal text-lg
     flex items-center justify-between
     border-1 border-gray--lighten
-    text-gray--lighten transition-colors
+    bg-white text-gray--lighten transition-colors
     focus-within:(outline-none border-typo--lighten ring-2
                 ring-gray--lighten ring-opacity-20 text-typo--darken);
 }
@@ -136,5 +136,11 @@ const handleAppendClick = () => {
   @apply border-red-500
   focus-within:(outline-none border-typo--lighten ring-2
                 ring-red-200 ring-opacity-20);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

@@ -4,11 +4,18 @@
       v-model="email"
       placeholder="johndoe@email.com"
       label="Email"
+      type="email"
+      required
       parent-class="mb-4"
       :disabled="isLoading"
       :rules="[rules.required, rules.isEmailValid]"
     />
-    <PasswordField v-model="password" parent-class="mb-6" :disabled="isLoading" />
+    <PasswordField
+      v-model="password"
+      parent-class="mb-6"
+      :disabled="isLoading"
+      required
+    />
 
     <Button type="submit" text="Entrar" :loading="isLoading" :disabled="isLoading" />
   </form>
