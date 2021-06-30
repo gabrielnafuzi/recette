@@ -320,11 +320,6 @@
   dependencies:
     cross-fetch "^3.0.6"
 
-"@iconify/json-tools@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@iconify/json-tools/-/json-tools-1.0.10.tgz#d9a7050dbbe8bb29d684d4b3f9446ed2d0bea3cc"
-  integrity sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==
-
 "@iconify/json@^1.1.360":
   version "1.1.360"
   resolved "https://registry.yarnpkg.com/@iconify/json/-/json-1.1.360.tgz#e4ab624d914e7047d03adb7d17a3dac18302906f"
@@ -499,6 +494,11 @@
   integrity sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
   dependencies:
     defer-to-connect "^1.0.1"
+
+"@types/es6-shim@^0.31.41":
+  version "0.31.41"
+  resolved "https://registry.yarnpkg.com/@types/es6-shim/-/es6-shim-0.31.41.tgz#6c0610500de36a4be69c734335a2997f6ff79e51"
+  integrity sha512-m4ge4Wab1aGOZ0lllaquvI7+Qn4PcTHYIXeTJy/XIWIWFiPHa8UmrWNczsb1BscLrwF8PNr/My3QKurx+SIoDw==
 
 "@types/json-schema@^7.0.7":
   version "7.0.7"
@@ -4468,14 +4468,6 @@ vite-plugin-fonts@^0.2.2:
   resolved "https://registry.yarnpkg.com/vite-plugin-fonts/-/vite-plugin-fonts-0.2.2.tgz#48cda78f5ad36907f3de497fa418ffd2b8f2ca83"
   integrity sha512-fhzhsrTiuzlDjSO6g5sV5EVIIvbb8lmsaIY6eUTBM4lcF55x40UBpHrcyvNwIhQG211g0lu83XC7oZlkmvdkMA==
 
-vite-plugin-icons@^0.6.0:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-icons/-/vite-plugin-icons-0.6.2.tgz#97d7716b4c1b97c0b068c503890db4acd6e6d867"
-  integrity sha512-FBaU06VtdXUWVwyxPhyjEfvWDWZh81V1a4KU3jb3gr5ocxN/piefcunrHfqUWvphwF51mi2gWpX9VoIOSj6gIw==
-  dependencies:
-    "@iconify/json-tools" "^1.0.10"
-    vue-template-es2015-compiler "^1.9.1"
-
 vite-plugin-pages@^0.12.2:
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/vite-plugin-pages/-/vite-plugin-pages-0.12.2.tgz#81c0c5e7a4223c65ecdfabe46e5bf079ecc28898"
@@ -4711,11 +4703,6 @@ vue-router@^4.0.6, vue-router@^4.0.8:
   integrity sha512-42mWSQaH7CCBQDspQTHv63f34VEnZC20g9QNK4WJ/zW8SdIUeT6TQ2i/78fjF/pVBUPLBWrGhvB7uDnaz7O/pA==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.10"
-
-vue-template-es2015-compiler@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
-  integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
 vue-tsc@^0.1.6:
   version "0.1.7"

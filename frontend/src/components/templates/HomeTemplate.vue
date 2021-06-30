@@ -15,8 +15,6 @@
 
 <script lang="ts" setup>
 import { useRecipeStore } from '@/store'
-import SectionTitle from '../atoms/SectionTitle.vue'
-import NoReceipesMessage from '../atoms/NoReceipesMessage.vue'
 
 const recipeStore = useRecipeStore()
 </script>

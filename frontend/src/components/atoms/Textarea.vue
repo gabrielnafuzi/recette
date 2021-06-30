@@ -14,47 +14,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineEmit, defineProps } from 'vue'
 
-export default defineComponent({
-  props: {
-    modelValue: {
-      type: [String, Number],
-      default: '',
-    },
-    label: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    parentClass: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    error: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    errorMessage: {
-      type: String,
-      required: false,
-      default: '',
-    },
+defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: '',
   },
-  emits: ['update:modelValue'],
-  setup(_, { emit }) {
-    const updateModel = (event: Event) => {
-      emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
-    }
-
-    return {
-      updateModel,
-    }
+  label: {
+    default: '',
+  },
+  parentClass: {
+    default: '',
+  },
+  error: {
+    default: false,
+  },
+  errorMessage: {
+    default: '',
   },
 })
+
+const emit = defineEmit(['update:modelValue'])
+
+const updateModel = (event: Event) => {
+  emit('update:modelValue', (event.target as HTMLTextAreaElement).value)
+}
 </script>
 
 <style scoped>

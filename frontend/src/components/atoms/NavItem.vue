@@ -6,20 +6,16 @@
   <span v-else class="nav-item">{{ text }}</span>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineProps } from 'vue'
 
-export default defineComponent({
-  props: {
-    text: {
-      type: String,
-      required: true,
-    },
-    to: {
-      type: String,
-      required: false,
-      default: '',
-    },
+defineProps({
+  text: {
+    type: String,
+    required: true,
+  },
+  to: {
+    default: '',
   },
 })
 </script>

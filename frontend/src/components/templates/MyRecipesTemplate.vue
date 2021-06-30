@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
 import { useRecipeStore } from '@/store'
-import { computed } from '@vue/runtime-core'
 
 const recipeStore = useRecipeStore()
 

@@ -4,20 +4,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineProps } from 'vue'
 
-export default defineComponent({
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: [String, Number],
-      required: false,
-      default: '20',
-    },
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  size: {
+    type: [String, Number],
+    default: '20',
   },
 })
 </script>

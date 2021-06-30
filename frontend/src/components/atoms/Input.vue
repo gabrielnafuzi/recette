@@ -35,101 +35,78 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+<script lang="ts" setup>
+import { defineProps, defineEmit, ref } from 'vue'
+import type { PropType } from 'vue'
 
 type Rule = (v: string) => boolean | string
 
-export default defineComponent({
-  name: 'Input',
-  props: {
-    modelValue: {
-      type: [String, Number],
-      default: '',
-    },
-    parentClass: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    label: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    appendIcon: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    clearable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    rules: {
-      type: Array as PropType<Rule[]>,
-      required: false,
-      default: () => [],
-    },
+const props = defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: '',
   },
-  emits: ['update:modelValue', 'click:append'],
-  setup(props, { emit }) {
-    const modelInput = ref<HTMLInputElement>()
-    const error = ref(false)
-    const errorMessage = ref('')
-
-    const runRules = (val: string) => {
-      for (const rule of props.rules) {
-        const result = rule(val)
-
-        if (typeof result === 'string') {
-          error.value = true
-          errorMessage.value = result
-
-          break
-        }
-
-        error.value = false
-        errorMessage.value = ''
-      }
-    }
-
-    const updateModel = (event: Event) => {
-      const val = (event.target as HTMLInputElement).value
-
-      emit('update:modelValue', val)
-
-      if (props.rules.length) runRules(val)
-    }
-
-    const focus = () => {
-      modelInput.value?.focus()
-    }
-
-    const clearField = () => {
-      focus()
-
-      emit('update:modelValue', null)
-    }
-
-    const handleAppendClick = () => {
-      focus()
-
-      emit('click:append')
-    }
-
-    return {
-      updateModel,
-      clearField,
-      modelInput,
-      handleAppendClick,
-      error,
-      errorMessage,
-      runRules,
-    }
+  parentClass: {
+    default: '',
+  },
+  label: {
+    default: '',
+  },
+  appendIcon: {
+    default: '',
+  },
+  clearable: {
+    default: false,
+  },
+  rules: {
+    type: Array as PropType<Rule[]>,
+    default: () => [],
   },
 })
+
+const emit = defineEmit(['update:modelValue', 'click:append'])
+
+const modelInput = ref<HTMLInputElement>()
+const error = ref(false)
+const errorMessage = ref('')
+
+const runRules = (val: string) => {
+  for (const rule of props.rules) {
+    const result = rule(val)
+
+    if (typeof result === 'string') {
+      error.value = true
+      errorMessage.value = result
+
+      break
+    }
+
+    error.value = false
+    errorMessage.value = ''
+  }
+}
+
+const updateModel = (event: Event) => {
+  const val = (event.target as HTMLInputElement).value
+
+  emit('update:modelValue', val)
+
+  if (props.rules.length) runRules(val)
+}
+
+const focus = () => modelInput.value?.focus()
+
+const clearField = () => {
+  focus()
+
+  emit('update:modelValue', null)
+}
+
+const handleAppendClick = () => {
+  focus()
+
+  emit('click:append')
+}
 </script>
 
 <style scoped>

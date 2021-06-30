@@ -68,8 +68,6 @@ defineProps({
     required: true,
   },
   loading: {
-    type: Boolean,
-    required: false,
     default: false,
   },
 })

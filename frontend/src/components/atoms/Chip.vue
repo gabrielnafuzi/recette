@@ -11,48 +11,43 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
 
 type Mode = 'default' | 'success' | 'warning' | 'error'
-type ModeColor = { background: string; text: string }
-type ModeColorsOptions = { [key in Mode]: ModeColor }
 
-export default defineComponent({
-  props: {
-    text: {
-      type: String,
-      required: true,
-    },
-    mode: {
-      type: String as PropType<Mode>,
-      required: false,
-      default: 'default',
-    },
+const props = defineProps({
+  text: {
+    type: String,
+    required: true,
   },
-  setup(props) {
-    const modeColors: ModeColorsOptions = {
-      default: {
-        background: 'bg-orange--base',
-        text: 'text-light-500',
-      },
-      success: {
-        background: 'bg-green--lighten',
-        text: 'text-green--base',
-      },
-      warning: {
-        background: 'bg-orange--lighten',
-        text: 'text-orange--base',
-      },
-      error: {
-        background: 'bg-red--lighten',
-        text: 'text-red--base',
-      },
-    }
-
-    return {
-      colors: modeColors[props.mode],
-    }
+  mode: {
+    type: String as PropType<Mode>,
+    default: 'default',
   },
 })
+
+const colors = (() => {
+  const modeColors = {
+    default: {
+      background: 'bg-orange--base',
+      text: 'text-light-500',
+    },
+    success: {
+      background: 'bg-green--lighten',
+      text: 'text-green--base',
+    },
+    warning: {
+      background: 'bg-orange--lighten',
+      text: 'text-orange--base',
+    },
+    error: {
+      background: 'bg-red--lighten',
+      text: 'text-red--base',
+    },
+  }
+
+  return modeColors[props.mode]
+})()
 </script>
