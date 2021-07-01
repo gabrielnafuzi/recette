@@ -495,11 +495,6 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@types/es6-shim@^0.31.41":
-  version "0.31.41"
-  resolved "https://registry.yarnpkg.com/@types/es6-shim/-/es6-shim-0.31.41.tgz#6c0610500de36a4be69c734335a2997f6ff79e51"
-  integrity sha512-m4ge4Wab1aGOZ0lllaquvI7+Qn4PcTHYIXeTJy/XIWIWFiPHa8UmrWNczsb1BscLrwF8PNr/My3QKurx+SIoDw==
-
 "@types/json-schema@^7.0.7":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -3849,6 +3844,11 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
+sortablejs@1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.10.2.tgz#6e40364d913f98b85a14f6678f92b5c1221f5290"
+  integrity sha512-YkPGufevysvfwn5rfdlGyrGjt7/CRHwvRPogD/lC+TnvcN29jDpCifKP+rBqf+LRldfXSTh+0CGLcSg0VIxq3A==
+
 source-map-js@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
@@ -4719,6 +4719,13 @@ vue@^3.0.11:
     "@vue/compiler-dom" "3.1.1"
     "@vue/runtime-dom" "3.1.1"
     "@vue/shared" "3.1.1"
+
+vuedraggable@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/vuedraggable/-/vuedraggable-4.0.3.tgz#98832a3562d44c73bbe4e205cc2dafce07b6ca14"
+  integrity sha512-NkJYk+UyxgEoSQcgvVZtqY6dYpdXkBHS8aq6CqoJAfXVM9ZRYT0WPdlBbTttG4nCwllU2M5JGGgo9Drt/L0a7w==
+  dependencies:
+    sortablejs "1.10.2"
 
 which-boxed-primitive@^1.0.1, which-boxed-primitive@^1.0.2:
   version "1.0.2"
