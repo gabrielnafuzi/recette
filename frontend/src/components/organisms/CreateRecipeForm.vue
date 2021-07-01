@@ -8,7 +8,7 @@
       required
     />
 
-    <ImageInput />
+    <UploadImage />
 
     <div class="grid grid-cols-1 gap-5 w-full max-w-full sm:grid-cols-2">
       <Input label="Tempo de preparo" placeholder="1h 30min" required />
