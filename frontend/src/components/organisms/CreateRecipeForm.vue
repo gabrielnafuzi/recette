@@ -1,5 +1,5 @@
 <template>
-  <form class="w-md max-w-full grid grid-cols-1 gap-5" @submit.prevent.stop="">
+  <form class="w-md max-w-full grid grid-cols-1 gap-5 py-4" @submit.prevent.stop="">
     <Input v-model="title" label="Título" placeholder="Ex: canja especial" required />
 
     <Textarea
@@ -60,12 +60,7 @@
 import { ref } from 'vue'
 import DraggableInputList from '../molecules/DraggableInputList.vue'
 
-const baseList = [
-  {
-    name: '',
-    id: 0,
-  },
-]
+const baseList = () => [{ name: '', id: 0 }]
 
 const title = ref('')
 const description = ref('')
@@ -74,8 +69,9 @@ const image = ref({ preview: '', raw: null as File | null })
 
 const preparationTime = ref('')
 const portions = ref<number>()
-const ingredients = ref(baseList)
-const steps = ref(baseList)
+
+const ingredients = ref(baseList())
+const steps = ref(baseList())
 
 const currentIngredientId = ref(0)
 const currentStepId = ref(0)
