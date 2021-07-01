@@ -90,8 +90,7 @@ const emit = defineEmit(['update:modelValue'])
 const drag = ref(false)
 
 const dragOptions = ref({
-  animation: 200,
-  group: 'description',
+  animation: 250,
   disabled: false,
   ghostClass: 'ghost',
 })
