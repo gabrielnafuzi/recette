@@ -9,18 +9,18 @@
   />
 
   <label
-    :for="img.preview ? '' : 'img'"
+    :for="modelValue.preview ? '' : 'img'"
     class="input-block"
-    :class="{ 'input-block-without-img': !img.preview }"
+    :class="{ 'input-block-without-img': !modelValue.preview }"
   >
-    <div v-if="!img.preview" class="flex items-center <sm:flex-col">
+    <div v-if="!modelValue.preview" class="flex items-center <sm:flex-col">
       <Icon name="ion-camera-outline" class="mr-3" size="26" />
       <span>Clique para enviar a foto da receita</span>
     </div>
 
     <div
       v-else
-      :style="{ backgroundImage: `url(${img.preview})` }"
+      :style="{ backgroundImage: `url(${modelValue.preview})` }"
       class="preview"
       :class="{ zoom: zoomPreview }"
       @mousedown.self="zoomPreview = true"
@@ -37,26 +37,38 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { defineEmit, defineProps, ref } from 'vue'
+import type { PropType } from 'vue'
+
+type ImageFile = {
+  preview: string
+  raw: File | null
+}
 
 const zoomPreview = ref(false)
 
-const img = ref({
-  preview: '',
-  raw: null as File | null,
+defineProps({
+  modelValue: {
+    type: Object as PropType<ImageFile>,
+    required: true,
+  },
 })
+
+const emit = defineEmit(['update:modelValue'])
 
 const handleImgChange = ({ target }: Event) => {
   const file = (target as HTMLInputElement).files?.[0]
 
   if (file) {
-    img.value.preview = URL.createObjectURL(file)
-    img.value.raw = file
+    emit('update:modelValue', {
+      preview: URL.createObjectURL(file),
+      raw: file,
+    })
   }
 }
 
 const handleDeleteImage = () => {
-  img.value = { preview: '', raw: null }
+  emit('update:modelValue', { preview: '', raw: null })
 }
 </script>
 

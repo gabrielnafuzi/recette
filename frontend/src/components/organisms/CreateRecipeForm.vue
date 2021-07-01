@@ -8,7 +8,8 @@
       required
     />
 
-    <UploadImage />
+    {{ img.raw?.name }}
+    <UploadImage v-model="img" />
 
     <div class="grid grid-cols-1 gap-5 w-full max-w-full sm:grid-cols-2">
       <Input label="Tempo de preparo" placeholder="1h 30min" required />
@@ -18,3 +19,12 @@
     <Button text="Enviar receita" class="mt-10 w-full max-w-full" />
   </form>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const img = ref({
+  preview: '',
+  raw: null as File | null,
+})
+</script>
