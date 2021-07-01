@@ -61,10 +61,10 @@ const updateModel = (event: Event) => {
   @apply w-full max-w-full h-40 rounded-md shadow-lighten p-3
     font-normal text-lg
     border-1 border-gray--lighten
-    placeholder-gray--lighten
-  bg-white text-gray--lighten transition-colors
+    placeholder-gray--lighten text-typo--darken
+  bg-white transition-colors
     focus-within:(outline-none border-typo--lighten ring-2
-                ring-gray--lighten ring-opacity-20 text-typo--darken);
+                ring-gray--lighten ring-opacity-20 );
 }
 
 .textarea.error {
