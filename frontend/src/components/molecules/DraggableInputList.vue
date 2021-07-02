@@ -37,6 +37,7 @@
           parent-class="mx-1"
           :placeholder="placeholder"
           resize="none"
+          required
         />
         <Input
           v-else
@@ -44,6 +45,7 @@
           parent-class="mx-1"
           :placeholder="placeholder"
           resize="none"
+          required
         />
 
         <Icon

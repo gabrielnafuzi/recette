@@ -55,7 +55,12 @@
       </button>
     </div>
 
-    <Button text="Enviar receita" class="mt-10 w-full max-w-full" />
+    <Button
+      text="Enviar receita"
+      class="mt-10 w-full max-w-full"
+      :disabled="isLoading"
+      :loading="isLoading"
+    />
   </form>
 </template>
 
@@ -73,6 +78,8 @@ const recipeStore = useRecipeStore()
 const router = useRouter()
 
 const baseList = () => [{ name: '', id: 0 }]
+
+const isLoading = ref(false)
 
 const title = ref('')
 const description = ref('')
@@ -108,6 +115,8 @@ const formatObjToIndexText = (obj: BaseItem, index: number) => ({
 const formatArray = (arr: BaseItem[]) => JSON.stringify(arr.map(formatObjToIndexText))
 
 const handleCreateRecipe = async () => {
+  isLoading.value = true
+
   const recipeData = new FormData()
 
   recipeData.append('title', title.value)
@@ -123,6 +132,8 @@ const handleCreateRecipe = async () => {
   await recipeStore.listOfCurrentUser()
 
   await router.push('/my-recipes')
+
+  isLoading.value = false
 }
 </script>
 

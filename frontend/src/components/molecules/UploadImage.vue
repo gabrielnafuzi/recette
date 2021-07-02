@@ -5,6 +5,7 @@
     type="file"
     name="img"
     accept="image/*"
+    :required="true"
     @change="handleImgChange"
   />
 
