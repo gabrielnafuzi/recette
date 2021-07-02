@@ -61,6 +61,13 @@ const useRecipeStore = defineStore({
         throw new Error(e)
       }
     },
+    async update(recipe: FormData, recipeId: number | string) {
+      try {
+        await api.patch(`/recipes/${recipeId}`, recipe)
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
   },
 })
 
