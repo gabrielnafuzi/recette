@@ -54,6 +54,13 @@ const useRecipeStore = defineStore({
         throw new Error(e)
       }
     },
+    async create(recipe: FormData) {
+      try {
+        await api.post('/recipes', recipe)
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
   },
 })
 

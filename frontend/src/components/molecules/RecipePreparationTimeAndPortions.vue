@@ -5,7 +5,7 @@
       <h4 class="subtitle">{{ recipeStore.recipe.preparationTime }}</h4>
     </div>
 
-    <Divider vertical />
+    <Divider :vertical="true" />
 
     <div class="ml-5">
       <h3 class="title">Porções para</h3>

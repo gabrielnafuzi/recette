@@ -5,7 +5,7 @@
       placeholder="johndoe@email.com"
       label="Email"
       type="email"
-      required
+      :required="true"
       parent-class="mb-4"
       :disabled="isLoading"
       :rules="[rules.required, rules.isEmailValid]"
@@ -14,7 +14,7 @@
       v-model="password"
       parent-class="mb-6"
       :disabled="isLoading"
-      required
+      :required="true"
     />
 
     <Button type="submit" text="Entrar" :loading="isLoading" :disabled="isLoading" />

@@ -6,7 +6,7 @@
       :recipe="recipe"
       :to="`/recipes/${recipe.id}`"
       :show-owner-name="false"
-      show-status
+      :show-status="true"
     >
       <template #actions>
         <MyRecipesRecipeCardActions
