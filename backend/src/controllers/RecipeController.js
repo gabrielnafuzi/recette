@@ -169,7 +169,10 @@ class RecipeController {
         }
       )
 
-      return res.status(201).json(recipe)
+      return res.status(201).json({
+        message: 'Receita criada com sucesso!',
+        content: recipe
+      })
     } catch (error) {
       return res.status(500).json({ error: error.message })
     }
