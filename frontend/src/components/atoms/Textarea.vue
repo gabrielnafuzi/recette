@@ -58,13 +58,13 @@ const updateModel = (event: Event) => {
 }
 
 .textarea {
-  @apply w-full max-w-full h-40 rounded-md shadow-lighten p-3
+  @apply w-full max-w-full h-36 rounded-md shadow-lighten p-3
     font-normal text-lg
     border-1 border-gray--lighten
     placeholder-gray--lighten text-typo--darken
   bg-white transition-colors
     focus-within:(outline-none border-typo--lighten ring-2
-                ring-gray--lighten ring-opacity-20 );
+    ring-orange--lighten ring-opacity-20 );
 }
 
 .textarea.error {

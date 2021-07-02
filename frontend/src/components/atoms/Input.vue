@@ -129,7 +129,7 @@ const handleAppendClick = () => {
     border-1 border-gray--lighten
     bg-white text-gray--lighten transition-colors
     focus-within:(outline-none border-typo--lighten ring-2
-                ring-gray--lighten ring-opacity-20 text-typo--darken);
+                ring-orange--lighten ring-opacity-20 text-typo--darken);
 }
 
 .input-block.error {
