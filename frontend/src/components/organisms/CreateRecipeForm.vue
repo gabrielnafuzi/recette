@@ -68,11 +68,7 @@
 import { ref } from 'vue'
 import { useRecipeStore } from '@/store'
 import { useRouter } from 'vue-router'
-
-type BaseItem = {
-  name: string
-  id: number
-}
+import type { DraggableItem } from '@/types'
 
 const recipeStore = useRecipeStore()
 const router = useRouter()
@@ -107,12 +103,13 @@ const handleNewStep = () => {
   steps.value = [...steps.value, newIngredient]
 }
 
-const formatObjToIndexText = (obj: BaseItem, index: number) => ({
+const formatObjToIndexText = (obj: DraggableItem, index: number) => ({
   index,
   text: obj.name,
 })
 
-const formatArray = (arr: BaseItem[]) => JSON.stringify(arr.map(formatObjToIndexText))
+const formatArray = (arr: DraggableItem[]) =>
+  JSON.stringify(arr.map(formatObjToIndexText))
 
 const handleCreateRecipe = async () => {
   isLoading.value = true

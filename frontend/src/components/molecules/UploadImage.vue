@@ -40,11 +40,7 @@
 <script lang="ts" setup>
 import { defineEmit, defineProps, ref } from 'vue'
 import type { PropType } from 'vue'
-
-type ImageFile = {
-  preview: string
-  raw: File | null
-}
+import type { ImageFile } from '@/types'
 
 const zoomPreview = ref(false)
 
