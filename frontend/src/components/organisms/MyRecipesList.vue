@@ -9,10 +9,7 @@
       :show-status="true"
     >
       <template #actions>
-        <MyRecipesRecipeCardActions
-          :recipe-id="recipe.id"
-          @delete-recipe="openConfirmDialog"
-        />
+        <MyRecipesRecipeCardActions :recipe="recipe" @delete-recipe="openConfirmDialog" />
       </template>
     </RecipeCard>
 

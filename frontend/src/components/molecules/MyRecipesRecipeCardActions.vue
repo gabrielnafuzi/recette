@@ -4,7 +4,7 @@
       <Icon name="ion-pencil-outline" size="24" />
     </button>
 
-    <button class="btn-icon" @click.stop="$emit('delete-recipe', recipeId)">
+    <button class="btn-icon" @click.stop="$emit('delete-recipe', recipe.id)">
       <Icon name="ion-trash-outline" size="24" class="text-red--base" />
     </button>
   </div>
@@ -13,17 +13,25 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
+import { useRecipeStore } from '@/store'
+import type { PropType } from 'vue'
+import type { Recipe } from '@/models'
 
 const props = defineProps({
-  recipeId: {
-    type: [String, Number],
+  recipe: {
+    type: Object as PropType<Recipe>,
     required: true,
   },
 })
 
+const recipeStore = useRecipeStore()
 const router = useRouter()
 
-const goToEdit = () => router.push(`/my-recipes/${props.recipeId}/edit`)
+const goToEdit = () => {
+  recipeStore.recipe = props.recipe
+
+  router.push(`/my-recipes/${props.recipe.id}/edit`)
+}
 </script>
 
 <style scoped>
