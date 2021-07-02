@@ -13,7 +13,7 @@ export type RecipeImage = {
   url: string
 }
 
-export default interface Recipe {
+export interface Recipe {
   id: number
   title: string
   description: string

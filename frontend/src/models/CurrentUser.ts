@@ -1,6 +1,6 @@
 import { UserRole } from '@/types'
 
-export default interface CurrentUser {
+export interface CurrentUser {
   id: number
   name: string
   email: string
