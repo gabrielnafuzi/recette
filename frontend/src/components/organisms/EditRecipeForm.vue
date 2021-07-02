@@ -1,5 +1,4 @@
 <template>
-  {{ recipeStore.recipe.title }}
   <form
     class="w-md max-w-full grid grid-cols-1 gap-5 py-4"
     @submit.prevent="handleUpdateRecipe"
