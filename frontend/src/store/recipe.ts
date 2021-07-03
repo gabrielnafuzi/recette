@@ -9,8 +9,8 @@ const useRecipeStore = defineStore({
     recipes: [] as Recipe[],
     recipe: {} as Recipe,
     currentUserRecipes: [] as Recipe[],
+    adminRecipes: [] as Recipe[],
   }),
-  getters: {},
   actions: {
     async list() {
       try {
@@ -31,6 +31,17 @@ const useRecipeStore = defineStore({
 
         if (response.content?.recipes) {
           this.currentUserRecipes = response.content.recipes
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
+    async listAllToAdmin() {
+      try {
+        const response: ApiResponse<Recipe[]> = await api.get('/recipes/admin')
+
+        if (response.content) {
+          this.adminRecipes = response.content
         }
       } catch (e) {
         throw new Error(e)
