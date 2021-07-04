@@ -187,32 +187,44 @@ class RecipeController {
         portions,
         ingredients,
         status,
-        steps
+        steps,
+        userId
       } = req.body
-      const { userId } = req
+      const { userId: userRequestingId } = req
       const { recipe_id } = req.params
 
-      const user = await User.findByPk(userId, {
+      const userRequesting = await User.findByPk(userRequestingId)
+
+      const userOwner = await User.findByPk(userId, {
         include: { association: 'recipes' }
       })
 
-      if (!user) {
+      if (!userOwner) {
         return res.status(404).json({ error: 'Usuário não encontrado' })
       }
 
-      const recipe = user.recipes.find(({ id }) => String(id) === recipe_id)
+      const recipe = userOwner.recipes.find(
+        ({ id }) => String(id) === recipe_id
+      )
 
       if (!recipe) {
         return res.status(404).json({ error: 'Receita não encontrada' })
       }
 
-      if (userId !== String(recipe?.user_id) && user.role !== 'admin') {
+      if (
+        userId !== String(recipe?.user_id) &&
+        userRequesting.role !== 'admin'
+      ) {
         return res
           .status(403)
           .json({ error: 'Sem permissão para editar essa receita' })
       }
 
-      if (status && status !== recipe?.status && user.role !== 'admin') {
+      if (
+        status &&
+        status !== recipe?.status &&
+        userRequesting.role !== 'admin'
+      ) {
         return res
           .status(403)
           .json({ error: 'Sem permissão para trocar o status dessa receita!' })
