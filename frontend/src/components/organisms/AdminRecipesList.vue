@@ -32,6 +32,7 @@
 import { ref } from 'vue'
 import { useRecipeStore } from '@/store'
 import type { Status as StatusValues } from '@/types'
+import type { Recipe } from '@/models'
 
 type StatusLabel = 'aprovar' | 'reprovar'
 
@@ -56,26 +57,27 @@ const recipeStore = useRecipeStore()
 const dialogValue = ref(false)
 const isLoading = ref(false)
 const status = ref<Status>({} as Status)
-const selectedRecipeId = ref<null | number>(null)
+const selectedRecipe = ref<Recipe>()
 
-const openConfirmDialog = (recipeId: number, newStatus: StatusValues) => {
+const openConfirmDialog = (recipe: Recipe, newStatus: StatusValues) => {
   dialogValue.value = true
 
   status.value = { ...statusValues[newStatus] }
 
-  selectedRecipeId.value = recipeId
+  selectedRecipe.value = recipe
 }
 
 const handleChangeRecipeStatus = async () => {
   isLoading.value = true
 
-  if (selectedRecipeId.value) {
+  if (selectedRecipe.value) {
     try {
       const recipeFormData = new FormData()
 
       recipeFormData.append('status', status.value.value)
+      recipeFormData.append('userId', String(selectedRecipe.value.user_id))
 
-      await recipeStore.update(recipeFormData, selectedRecipeId.value)
+      await recipeStore.update(recipeFormData, selectedRecipe.value.id)
 
       await recipeStore.listAllToAdmin()
     } finally {

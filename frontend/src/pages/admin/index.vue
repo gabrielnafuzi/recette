@@ -14,11 +14,11 @@ const router = useRouter()
 
 const isAdmin = authStore.currentUser?.role === 'admin'
 
-const getAllRecipesToAdmin = async () => await recipeStore.listAllToAdmin()
-
 if (!isAdmin) {
   router.push('/')
 }
 
-if (!Object.keys(recipeStore.adminRecipes).length) getAllRecipesToAdmin()
+const getAllRecipesToAdmin = async () => await recipeStore.listAllToAdmin()
+
+getAllRecipesToAdmin()
 </script>

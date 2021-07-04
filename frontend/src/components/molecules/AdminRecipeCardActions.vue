@@ -5,7 +5,7 @@
       :class="banBtnClasses.btn"
       @click.stop="
         recipe.status !== 'disapproved' &&
-          $emit('change-recipe-status', recipe.id, 'disapproved')
+          $emit('change-recipe-status', recipe, 'disapproved')
       "
     >
       <Icon name="ion-ban-outline" size="28" :class="banBtnClasses.icon" />
@@ -15,8 +15,7 @@
       class="btn-icon mr-1"
       :class="acceptBtnClasses.btn"
       @click.stop="
-        recipe.status !== 'approved' &&
-          $emit('change-recipe-status', recipe.id, 'approved')
+        recipe.status !== 'approved' && $emit('change-recipe-status', recipe, 'approved')
       "
     >
       <Icon name="ion-checkmark" size="28" :class="acceptBtnClasses.icon" />

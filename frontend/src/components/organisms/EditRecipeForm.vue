@@ -66,12 +66,13 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import { useRecipeStore } from '@/store'
+import { useAuthStore, useRecipeStore } from '@/store'
 import { useRouter } from 'vue-router'
 import type { ImageFile, DraggableItem } from '@/types'
 import type { IngredientsOrStep } from '@/models'
 import { URLtoFile } from '@/utils'
 
+const authStore = useAuthStore()
 const recipeStore = useRecipeStore()
 const router = useRouter()
 
@@ -144,6 +145,7 @@ const handleUpdateRecipe = async () => {
   recipeData.append('portions', String(portions.value ?? 0))
   recipeData.append('ingredients', formatArray(ingredients.value))
   recipeData.append('steps', formatArray(steps.value))
+  recipeData.append('userId', String(authStore.currentUser?.id))
 
   image.value.raw && recipeData.append('image', image.value.raw)
 
