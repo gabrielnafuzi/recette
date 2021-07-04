@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "CHOKIDAR_USEPOLLING=true vite --port 3000",
+    "dev": "vite --port 3000",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
