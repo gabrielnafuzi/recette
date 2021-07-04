@@ -1,6 +1,6 @@
 module.exports = {
   render(image) {
-    const url = process.env.PORT || 'http://localhost:3333'
+    const url = process.env.APP_URL || 'http://localhost:3333'
 
     return {
       id: image?.id,
