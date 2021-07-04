@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { api } from '@/services'
 import { Recipe } from '@/models'
 import { ApiResponse } from '@/types'
+import { NOT_ALLOWED_TO_SEE_ERROR_MESSAGE } from '@/constants'
 
 const useRecipeStore = defineStore({
   id: 'recipe',
@@ -55,6 +56,10 @@ const useRecipeStore = defineStore({
           this.recipe = response.content
         }
       } catch (e) {
+        if (e?.response?.status === 403) {
+          throw new Error(NOT_ALLOWED_TO_SEE_ERROR_MESSAGE)
+        }
+
         throw new Error(e)
       }
     },
