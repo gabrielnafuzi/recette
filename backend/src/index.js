@@ -12,8 +12,8 @@ app.use(express.json())
 app.use(routes)
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 
-const PORT = 3333
+const PORT = process.env.PORT || 3333
 
 app.listen(PORT, () => {
-  console.log(`Server launched on: http://localhost:${PORT}`)
+  console.log(`Server launched on: ${PORT}`)
 })
