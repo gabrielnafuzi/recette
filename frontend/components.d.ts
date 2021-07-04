@@ -24,6 +24,7 @@ declare module 'vue' {
     ConfirmDialog: typeof import('./src/components/molecules/ConfirmDialog.vue')['default']
     DraggableInputList: typeof import('./src/components/molecules/DraggableInputList.vue')['default']
     FormCard: typeof import('./src/components/molecules/FormCard.vue')['default']
+    MenuDropdown: typeof import('./src/components/molecules/MenuDropdown.vue')['default']
     MyRecipesRecipeCardActions: typeof import('./src/components/molecules/MyRecipesRecipeCardActions.vue')['default']
     MyRecipesSectionTitle: typeof import('./src/components/molecules/MyRecipesSectionTitle.vue')['default']
     NavBar: typeof import('./src/components/molecules/NavBar.vue')['default']

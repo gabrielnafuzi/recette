@@ -28,12 +28,17 @@
       class="mr-6 sm:(mr-0 ml-6)"
     />
 
-    <NavItem
+    <MenuDropdown
       v-if="authStore.currentUser"
-      text="Sair"
       class="mr-6 sm:(mr-0 ml-6)"
-      @click.stop="logout"
-    />
+      title="Gabriel Moraes"
+    >
+      <NavItem
+        text="Sair"
+        class="block px-4 py-2 text-sm capitalize hover:bg-gray-100"
+        @click.stop="logout"
+      />
+    </MenuDropdown>
   </nav>
 </template>
 
