@@ -55,7 +55,7 @@ api.interceptors.response.use(
       window.localStorage.removeItem('token')
     }
 
-    return Promise.reject(errorMessage)
+    return Promise.reject(error)
   },
 )
 
