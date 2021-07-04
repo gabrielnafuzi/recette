@@ -31,7 +31,7 @@
     <MenuDropdown
       v-if="authStore.currentUser"
       class="mr-6 sm:(mr-0 ml-6)"
-      title="Gabriel Moraes"
+      :title="authStore.currentUser.name || '...'"
     >
       <NavItem
         text="Sair"
