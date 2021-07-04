@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { useAuthStore } from '@/store'
+import { useAuthStore, useRecipeStore } from '@/store'
 import { Notyf } from 'notyf'
 
 const notyf = new Notyf({
@@ -46,7 +46,13 @@ api.interceptors.response.use(
     })
 
     if (status === 401) {
-      // Log out user
+      const authStore = useAuthStore()
+      const recipeStore = useRecipeStore()
+
+      authStore.$reset()
+      recipeStore.$reset()
+
+      window.localStorage.removeItem('token')
     }
 
     return Promise.reject(errorMessage)
