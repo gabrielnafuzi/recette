@@ -9,5 +9,5 @@ const recipeStore = useRecipeStore()
 
 const getRecipesOfCurrentUser = async () => await recipeStore.listOfCurrentUser()
 
-if (!Object.keys(recipeStore.currentUserRecipes).length) getRecipesOfCurrentUser()
+getRecipesOfCurrentUser()
 </script>
