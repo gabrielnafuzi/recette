@@ -4,6 +4,8 @@
 
     <RecipeDetails />
   </div>
+
+  <RecipeDetailsSkeletonLoading v-else />
 </template>
 
 <script lang="ts" setup>

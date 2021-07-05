@@ -4,6 +4,8 @@ import { Recipe } from '@/models'
 import { ApiResponse } from '@/types'
 import { NOT_ALLOWED_TO_SEE_ERROR_MESSAGE } from '@/constants'
 
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 2000))
+
 const useRecipeStore = defineStore({
   id: 'recipe',
   state: () => ({
@@ -63,6 +65,8 @@ const useRecipeStore = defineStore({
     },
     async show(id: number | string) {
       try {
+        await sleep()
+
         const response: ApiResponse<Recipe> = await api.get(`/recipes/${id}`)
 
         if (response.content) {
