@@ -11,9 +11,12 @@ const useRecipeStore = defineStore({
     recipe: {} as Recipe,
     currentUserRecipes: [] as Recipe[],
     adminRecipes: [] as Recipe[],
+    isLoading: false,
   }),
   actions: {
     async list() {
+      this.isLoading = true
+
       try {
         const response: ApiResponse<Recipe[]> = await api.get('/recipes')
 
@@ -22,9 +25,13 @@ const useRecipeStore = defineStore({
         }
       } catch (e) {
         throw new Error(e)
+      } finally {
+        this.isLoading = false
       }
     },
     async listOfCurrentUser() {
+      this.isLoading = true
+
       try {
         const response: ApiResponse<{ recipes: Recipe[] }> = await api.get(
           '/recipes/my-recipes',
@@ -35,9 +42,13 @@ const useRecipeStore = defineStore({
         }
       } catch (e) {
         throw new Error(e)
+      } finally {
+        this.isLoading = false
       }
     },
     async listAllToAdmin() {
+      this.isLoading = true
+
       try {
         const response: ApiResponse<Recipe[]> = await api.get('/recipes/admin')
 
@@ -46,6 +57,8 @@ const useRecipeStore = defineStore({
         }
       } catch (e) {
         throw new Error(e)
+      } finally {
+        this.isLoading = false
       }
     },
     async show(id: number | string) {

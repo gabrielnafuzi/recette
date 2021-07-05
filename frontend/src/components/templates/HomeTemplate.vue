@@ -1,7 +1,9 @@
 <template>
   <SectionTitle title="Receitas mais recentes" class="mt-5" />
 
-  <RecipeListGrid v-if="recipeStore.recipes.length">
+  <RecipeListSkeletonLoading v-if="recipeStore.isLoading" :subtitle="true" />
+
+  <RecipeListGrid v-else-if="recipeStore.recipes.length">
     <RecipeCard
       v-for="recipe in recipeStore.recipes"
       :key="recipe.id"

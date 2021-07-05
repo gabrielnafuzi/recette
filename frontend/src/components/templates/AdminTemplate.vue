@@ -1,7 +1,8 @@
 <template>
   <SectionTitle title="Admin: Todas receitas" class="mt-5" />
 
-  <AdminRecipesList v-if="hasRecipes" />
+  <RecipeListSkeletonLoading v-if="recipeStore.isLoading" :actions="true" />
+  <AdminRecipesList v-else-if="hasRecipes" />
   <NoReceipesMessage v-else text="Nenhuma receita cadastrada..." />
 </template>
 

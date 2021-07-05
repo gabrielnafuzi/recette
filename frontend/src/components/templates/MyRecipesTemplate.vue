@@ -2,7 +2,8 @@
   <div class="mt-5">
     <MyRecipesSectionTitle />
 
-    <MyRecipesList v-if="hasRecipes" />
+    <RecipeListSkeletonLoading v-if="recipeStore.isLoading" :actions="true" />
+    <MyRecipesList v-else-if="hasRecipes" />
     <NoReceipesMessage v-else text="Você não possui nenhuma receita..." />
   </div>
 </template>
